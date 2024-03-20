@@ -1,9 +1,9 @@
+import 'package:app/chat/components/chat_bubble.dart';
+import 'package:app/chat/service/auth/auth_service.dart';
+import 'package:app/chat/service/chat/chat_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:whispr/components/chat_bubble.dart';
-import 'package:whispr/components/textfield.dart';
-import 'package:whispr/services/auth/auth_service.dart';
-import 'package:whispr/services/chat/chat_service.dart';
+
 
 
 class Chat extends StatefulWidget {
@@ -146,7 +146,7 @@ class _ChatState extends State<Chat> {
     return Container(child: Column(
       crossAxisAlignment: isCurentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
-        ChatBubble(message: data["message"], isCurentUser: isCurentUser,)
+        ChatBubble(message: data["message"], isCurrentUser: isCurentUser,)
       ],
     ));
   }
@@ -159,8 +159,10 @@ class _ChatState extends State<Chat> {
         children: [
           //textfield
           Expanded(
-            child: CustomTextField(
-              hintText: "Type a message",
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Type a message here...'
+              ),
               obscureText: false,
               controller: _messageController,
               focusNode: MyfocusNode,

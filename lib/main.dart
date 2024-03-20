@@ -1,4 +1,4 @@
-import 'package:app/stat/stat.dart';
+import 'package:app/chat/chat.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
         //home: loading_page()
-        home: Stat(),
+        home: Chat(receiverEmail: 'aarruwanthie@gmail.com', receiverID: 'woweo3',),
         );
   }
 }

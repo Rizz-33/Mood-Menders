@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60044014899",
+    "project_id": "mood-menders-bb1e3",
+    "storage_bucket": "mood-menders-bb1e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60044014899:android:008c5436b491c6c7c77a46",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV0E_zAuPxlgk5WOXHKse-ve-jZQ2Ov-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

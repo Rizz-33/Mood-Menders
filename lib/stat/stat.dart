@@ -2,7 +2,6 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class Stat extends StatefulWidget {
   const Stat({Key? key}) : super(key: key);
@@ -183,18 +182,6 @@ class _StatState extends State<Stat> {
                     ),
                   ),
                 ],
-              ),
-            ),
-            TableCalendar(
-              calendarController: CalendarController(),
-              initialCalendarFormat: CalendarFormat.week,
-              availableCalendarFormats: {CalendarFormat.month: 'Month', CalendarFormat.week: 'Week'},
-              headerStyle: HeaderStyle(
-                formatButtonVisible: false,
-                centerHeaderTitle: true,
-                titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                leftChevronIcon: Icon(Icons.chevron_left),
-                rightChevronIcon: Icon(Icons.chevron_right),
               ),
             ),
           ],

@@ -22,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
             children: [
               DrawerHeader(child:
                 Image.asset(
-                  'lib/images/logo.png',
+                  'lib/images/logoblack.png',
                   width: 240,
                 )),
               

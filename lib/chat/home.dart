@@ -4,6 +4,7 @@ import 'package:app/chat/components/usertile.dart';
 import 'package:app/chat/service/auth/auth_service.dart';
 import 'package:app/chat/service/chat/chat_service.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key});
@@ -17,14 +18,51 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text(
-          'Home',
-          style: TextStyle(fontWeight: FontWeight.bold),
+      title: Padding(
+        padding: const EdgeInsets.only(
+          left: 10,
         ),
-        backgroundColor: Colors.transparent,
-        foregroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0,),
+                  child: Text(
+                    'CHAT',
+                    style: GoogleFonts.poppins(
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Image.asset(
+              'lib/images/leaf2.png',
+              fit: BoxFit.cover,
+            ),
+          ],
+        ),
       ),
+      titleSpacing: 4.0,
+      toolbarHeight: 60,
+      toolbarOpacity: 0.9,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(18),
+            bottomLeft: Radius.circular(18)),
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.black,
+      ),
+      elevation: 0.00,
+      backgroundColor: const Color.fromARGB(255, 134, 208, 203),
+    ),
       drawer: CustomDrawer(),
       body: _buildUserList(),
     );

@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/mindfulnessstep7.dart';
+import 'package:app/components/button.dart';
+import 'package:app/mindfulness/mindfulnessstep9.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep6_page extends StatefulWidget {
-  const mindfulnessstep6_page({
+class mindfulnessstep8_page extends StatefulWidget {
+  const mindfulnessstep8_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep6_page> createState() => _mindfulnessstep6_pageState();
+  State<mindfulnessstep8_page> createState() => _mindfulnessstep8_pageState();
 }
 
-class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
+class _mindfulnessstep8_pageState extends State<mindfulnessstep8_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +69,7 @@ class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step2.png',
+                    'lib/images/step8 .png',
                     height: 240,
                   )
                 ],
@@ -89,7 +89,7 @@ class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
                   children: [
                     //message
                     Text(
-                      'Step 06',
+                      'Step 08',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
@@ -113,17 +113,18 @@ class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'If desired, take a moment to reflect on something \nyou are grateful for. This can be a person, a \nmoment, or even the opportunity to meditate.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Consider reflecting on your meditation experience in a journal. Write down any insights, observations, or feelings that arose during your practice.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -131,7 +132,7 @@ class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
             ),
           ),
           const SizedBox(
-            height: 24,
+            height: 25,
           ),
           //continue button
           Padding(
@@ -143,7 +144,7 @@ class _mindfulnessstep6_pageState extends State<mindfulnessstep6_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const mindfulnessstep7_page())),
+                        builder: (context) => (const mindfulnessstep9_page())),
                   );
                 }
               },

@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/meditaionmethods.dart';
+import 'package:app/components/button.dart';
+import 'package:app/mindfulness/mindfulnessstep5.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep9_page extends StatefulWidget {
-  const mindfulnessstep9_page({
+class mindfulnessstep4_page extends StatefulWidget {
+  const mindfulnessstep4_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep9_page> createState() => _mindfulnessstep9_pageState();
+  State<mindfulnessstep4_page> createState() => _mindfulnessstep4_pageState();
 }
 
-class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
+class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +57,7 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
         backgroundColor: const Color.fromARGB(251, 241, 255, 252),
         body: SingleChildScrollView(
             child: Column(children: [
+          //image
           const SizedBox(
             height: 20,
           ),
@@ -69,15 +70,15 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step10.png',
-                    height: 210,
+                    'lib/images/step14.png',
+                    height: 240,
                   )
                 ],
               ),
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -89,12 +90,11 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
                   children: [
                     //message
                     Text(
-                      'You  are successfully completed \nmindfullness meditation',
-                      textAlign: TextAlign.center,
+                      'Step 04',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ],
@@ -103,7 +103,7 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 20,
           ),
           //para
           Padding(
@@ -114,17 +114,18 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Remember, mindfulness meditation is a skill that \ntakes time to develop. Encourage users to \nbe patient with themselves and to approach the \npractice with an open and non-judgmental \nattitude. Regular practice can lead to increased \nmindfulness and a greater sense of well-being.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Practice observing your thoughts and feelings without judgment. Allow them to come and go like passing clouds.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -138,13 +139,13 @@ class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Back to Home Page',
+              buttontext: 'Next Step',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (meditaionmethods_page())),
+                        builder: (context) => (const mindfulnessstep5_page())),
                   );
                 }
               },

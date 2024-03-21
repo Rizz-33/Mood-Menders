@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/mindfulnessstep5.dart';
+import 'package:app/components/button.dart';
+import 'package:app/mindfulness/mindfulnessstep4.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep4_page extends StatefulWidget {
-  const mindfulnessstep4_page({
+class mindfulnessstep3_page extends StatefulWidget {
+  const mindfulnessstep3_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep4_page> createState() => _mindfulnessstep4_pageState();
+  State<mindfulnessstep3_page> createState() => _mindfulnessstep3_pageState();
 }
 
-class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
+class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +70,7 @@ class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step14.png',
+                    'lib/images/step10.png',
                     height: 240,
                   )
                 ],
@@ -90,7 +90,7 @@ class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
                   children: [
                     //message
                     Text(
-                      'Step 04',
+                      'Step 03',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
@@ -114,17 +114,18 @@ class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Practice observing your thoughts and feelings \nwithout judgment. Allow them to come and go \nlike passing clouds.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Whenever your mind starts to wander (and it will), gently acknowledge the thought and then bring your focus back to your breath. Be patient with yourself.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -144,7 +145,7 @@ class _mindfulnessstep4_pageState extends State<mindfulnessstep4_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const mindfulnessstep5_page())),
+                        builder: (context) => (const mindfulnessstep4_page())),
                   );
                 }
               },

@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/mindfulnessstep3.dart';
+import 'package:app/components/button.dart';
+import 'package:app/mindfulness/mindfulnessstep8.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep2_page extends StatefulWidget {
-  const mindfulnessstep2_page({
+class mindfulnessstep7_page extends StatefulWidget {
+  const mindfulnessstep7_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep2_page> createState() => _mindfulnessstep2_pageState();
+  State<mindfulnessstep7_page> createState() => _mindfulnessstep7_pageState();
 }
 
-class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
+class _mindfulnessstep7_pageState extends State<mindfulnessstep7_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +57,6 @@ class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
         backgroundColor: const Color.fromARGB(251, 241, 255, 252),
         body: SingleChildScrollView(
             child: Column(children: [
-          //image
           const SizedBox(
             height: 20,
           ),
@@ -70,14 +69,13 @@ class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step2.png',
+                    'lib/images/step13.png',
                     height: 240,
                   )
                 ],
               ),
             ),
           ),
-
           const SizedBox(
             height: 20,
           ),
@@ -91,7 +89,7 @@ class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
                   children: [
                     //message
                     Text(
-                      'Step 02',
+                      'Step 07',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
@@ -115,17 +113,18 @@ class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Direct your attention to the sensations of your \nbreath. Notice the rising and falling of your \nchest or the sensation of air passing through \nyour nostrils.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'When you are ready to end your meditation, slowly bring your awareness back to the room. Gently open your eyes and take a moment to transition.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -145,7 +144,7 @@ class _mindfulnessstep2_pageState extends State<mindfulnessstep2_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const mindfulnessstep3_page())),
+                        builder: (context) => (const mindfulnessstep8_page())),
                   );
                 }
               },

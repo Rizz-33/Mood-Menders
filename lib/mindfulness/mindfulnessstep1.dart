@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/mindfulnessstep4.dart';
+import 'package:app/components/button.dart';
+import 'package:app/mindfulness/mindfulnessstep2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep3_page extends StatefulWidget {
-  const mindfulnessstep3_page({
+class mindfulnessstep1_page extends StatefulWidget {
+  const mindfulnessstep1_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep3_page> createState() => _mindfulnessstep3_pageState();
+  State<mindfulnessstep1_page> createState() => _mindfulnessstep1_pageState();
 }
 
-class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
+class _mindfulnessstep1_pageState extends State<mindfulnessstep1_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,10 +57,11 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
         backgroundColor: const Color.fromARGB(251, 241, 255, 252),
         body: SingleChildScrollView(
             child: Column(children: [
-          //image
           const SizedBox(
             height: 20,
           ),
+
+          //image
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Container(
@@ -70,13 +71,14 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step10.png',
+                    'lib/images/step16.png',
                     height: 240,
                   )
                 ],
               ),
             ),
           ),
+
           const SizedBox(
             height: 20,
           ),
@@ -90,7 +92,7 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
                   children: [
                     //message
                     Text(
-                      'Step 03',
+                      'Step 01',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
@@ -102,6 +104,7 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
               ),
             ),
           ),
+
           const SizedBox(
             height: 20,
           ),
@@ -114,23 +117,27 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Whenever your mind starts to wander (and it \nwill), gently acknowledge the thought \nand then bring your focus back to your breath. \nBe patient with yourself.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Close your eyes gently. Take a few deep breaths to center yourself. Then, allow your breath to return to its natural rhythm.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
           ),
+
           const SizedBox(
-            height: 25,
+            height: 40,
           ),
           //continue button
           Padding(
@@ -142,7 +149,7 @@ class _mindfulnessstep3_pageState extends State<mindfulnessstep3_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const mindfulnessstep4_page())),
+                        builder: (context) => (const mindfulnessstep2_page())),
                   );
                 }
               },

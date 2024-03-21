@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/mindfulnessstep6.dart';
+import 'package:app/components/button.dart';
+import 'package:app/meditaionmethods.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class mindfulnessstep5_page extends StatefulWidget {
-  const mindfulnessstep5_page({
+class mindfulnessstep9_page extends StatefulWidget {
+  const mindfulnessstep9_page({
     super.key,
   });
 
   @override
-  State<mindfulnessstep5_page> createState() => _mindfulnessstep5_pageState();
+  State<mindfulnessstep9_page> createState() => _mindfulnessstep9_pageState();
 }
 
-class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
+class _mindfulnessstep9_pageState extends State<mindfulnessstep9_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,15 +69,15 @@ class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step5.png',
-                    height: 240,
+                    'lib/images/step10.png',
+                    height: 210,
                   )
                 ],
               ),
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -87,14 +87,18 @@ class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Step 05',
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'You  are successfully completed mindfullness meditation',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 16,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ],
                 ),
@@ -102,7 +106,7 @@ class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
           //para
           Padding(
@@ -113,17 +117,18 @@ class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'After a few minutes, start to expand your \nawareness beyond your breath. Notice the \nsounds around you, the sensation of your \nbody against the chair or floor, and any \nother sensory experiences.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Remember, mindfulness meditation is a skill that takes time to develop. Encourage users to be patient with themselves and to approach the practice with an open and non-judgmental attitude. Regular practice can lead to increased mindfulness and a greater sense of well-being.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -131,19 +136,19 @@ class _mindfulnessstep5_pageState extends State<mindfulnessstep5_page> {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 25,
           ),
           //continue button
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Next Step',
+              buttontext: 'Back to Home Page',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const mindfulnessstep6_page())),
+                        builder: (context) => (meditaionmethods_page())),
                   );
                 }
               },

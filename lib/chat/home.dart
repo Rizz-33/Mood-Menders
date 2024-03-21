@@ -1,4 +1,5 @@
 import 'package:app/chat/chat.dart';
+import 'package:app/chat/components/customdrawer.dart';
 import 'package:app/chat/components/usertile.dart';
 import 'package:app/chat/service/auth/auth_service.dart';
 import 'package:app/chat/service/chat/chat_service.dart';
@@ -24,6 +25,7 @@ class HomePage extends StatelessWidget {
         foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
       ),
+      drawer: CustomDrawer(),
       body: _buildUserList(),
     );
   }

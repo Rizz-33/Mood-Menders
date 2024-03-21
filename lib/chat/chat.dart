@@ -83,7 +83,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: const Color.fromARGB(255, 241, 255, 252),
       appBar: AppBar(
         title: Row(
           children: [

@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
 
         // Return list view
         return ListView(
-          children: snapshot.data!.map<Widget>((userData) =>
+          children: (snapshot.data as List<dynamic>).map<Widget>((userData) =>
               _buildUserListItem(userData, context)).toList(),
         );
       },
@@ -96,26 +96,30 @@ class HomePage extends StatelessWidget {
   }
 
   // Build individual list tile for user
-  Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context) {
-    // Display users except the current user
-    if (userData['email'] != _authService.getCurrentUser()!.email) {
-      return UserTile(
-        text: userData['email'],
-        isNewMessage: false,
-        onTap: () {
-          // Tapped on a user -> go to chat
-          Navigator.push(
+  Widget _buildUserListItem(Map<String, dynamic>? userData, BuildContext context) {
+    // Check if userData is not null
+    if (userData != null) {
+      // Display users except the current user
+      if (userData['email'] != null && _authService.getCurrentUser() != null && userData['email'] != _authService.getCurrentUser()!.email) {
+        return UserTile(
+          text: userData['email'],
+          isNewMessage: false,
+          onTap: () {
+            // Tapped on a user -> go to chat
+            Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => ChatPage(
                   receiverEmail: userData['email'],
                   receiverID: userData['uid'],
                 ),
-              ));
-        },
-      );
-    } else {
-      return Container();
+              ),
+            );
+          },
+        );
+      }
     }
+    // Return an empty container if userData is null or email is null
+    return Container();
   }
 }

@@ -64,7 +64,10 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 134, 208, 203),
     ),
       drawer: CustomDrawer(),
-      body: _buildUserList(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+        child: _buildUserList(),
+      ),
     );
   }
 

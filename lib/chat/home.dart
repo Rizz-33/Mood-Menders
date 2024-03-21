@@ -12,19 +12,13 @@ class HomePage extends StatelessWidget {
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
 
-  void logout(){
-    //get auth service
-    final auth = AuthService();
-    auth.signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: Text(
-          'Chat',
+          'Home',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,
@@ -34,14 +28,6 @@ class HomePage extends StatelessWidget {
       drawer: CustomDrawer(),
       body: _buildUserList(),
     );
-  }
-
-  Widget _logout() {
-    return ListTile(
-              title: Text("L O G O U T", style: TextStyle(color: Colors.grey[700]),),
-              leading: Icon(Icons.logout, color: Colors.grey[600],),
-              onTap: logout,
-            );
   }
 
   // Build a list of users except for the current logged-in user

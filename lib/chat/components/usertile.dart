@@ -26,7 +26,10 @@ class UserTile extends StatelessWidget {
         child: Row(
           children: [
             // Icon
-            Icon(Icons.person),
+            Image.asset(
+              'lib/images/loveearth (1).png',
+              height: 36,
+            ),
             const SizedBox(width: 20),
             // Username
             Text(

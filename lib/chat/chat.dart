@@ -85,9 +85,18 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text(widget.receiverEmail),
+        title: Row(
+          children: [
+            Image.asset(
+              'lib/images/loveearth (1).png',
+              width: 36,
+            ),
+            SizedBox(width: 24),
+            Text(widget.receiverEmail),
+          ],
+        ),
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey,
+        foregroundColor: const Color.fromARGB(255, 70, 66, 68),
         elevation: 0,
       ),
       body: Column(

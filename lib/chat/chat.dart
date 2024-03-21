@@ -38,13 +38,13 @@ class _ChatPageState extends State<ChatPage> {
 
         //scroll down
 
-        Future.delayed(Duration(milliseconds: 500), () => scrollDown());
+        Future.delayed(const Duration(milliseconds: 500), () => scrollDown());
       }
     });
 
     //wait a bit for listview to be built, then scroll to bottom
     Future.delayed(
-      Duration(milliseconds: 500),
+      const Duration(milliseconds: 500),
       () => scrollDown(),
     );
   }
@@ -61,7 +61,7 @@ class _ChatPageState extends State<ChatPage> {
   void scrollDown() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.fastEaseInToSlowEaseOut,
     );
   }
@@ -91,7 +91,7 @@ class _ChatPageState extends State<ChatPage> {
               'lib/images/loveearth (1).png',
               width: 36,
             ),
-            SizedBox(width: 24),
+            const SizedBox(width: 24),
             Text(widget.receiverEmail),
           ],
         ),
@@ -115,10 +115,10 @@ class _ChatPageState extends State<ChatPage> {
 
   //build message list
   Widget _buildMessageList() {
-    String? senderID = _authService.getCurrentUser()?.uid;
+    String? senderID = _authService.getCurrentUser()!.uid;
 
     return StreamBuilder(
-      stream: _chatService.getMessage(widget.receiverID, senderID ?? ''),
+      stream: _chatService.getMessage(widget.receiverID, senderID),
       builder: (context, snapshot) {
         //errors
         if (snapshot.hasError) {
@@ -171,7 +171,11 @@ class _ChatPageState extends State<ChatPage> {
               padding: const EdgeInsets.symmetric(horizontal: 13.0),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: "     Type a message",
+                  hintText: "Type a message",
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromARGB(255, 39, 142, 135),),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
                 obscureText: false,
                 controller: _messageController,
@@ -182,14 +186,14 @@ class _ChatPageState extends State<ChatPage> {
 
           //send button
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 39, 142, 135),
               shape: BoxShape.circle,
             ),
-            margin: EdgeInsets.only(right: 16),
+            margin: const EdgeInsets.only(right: 16),
             child: IconButton(
               onPressed: sendMessage,
-              icon: Icon(Icons.arrow_upward, color: Colors.white),
+              icon: const Icon(Icons.arrow_upward, color: Colors.white),
             ),
           ),
         ],

@@ -4,7 +4,6 @@ import 'package:app/chat/service/chat/chat_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
@@ -33,13 +32,13 @@ class _ChatPageState extends State<ChatPage> {
     //add listener to focus node
     MyfocusNode.addListener(() {
       if (MyfocusNode.hasFocus) {
-        //cause a delay so that the keuboard has time to show up
+        //cause a delay so that the keyboard has time to show up
 
         //amount of remaining space will be calculated
 
         //scroll down
 
-        Future.delayed(Duration(milliseconds: 500), () => scrollDown(),);
+        Future.delayed(Duration(milliseconds: 500), () => scrollDown());
       }
     });
 
@@ -76,11 +75,9 @@ class _ChatPageState extends State<ChatPage> {
 
       //clear text controller
       _messageController.clear();
-
     }
 
     scrollDown();
-
   }
 
   @override
@@ -109,9 +106,10 @@ class _ChatPageState extends State<ChatPage> {
 
   //build message list
   Widget _buildMessageList() {
-    String senderID = _authService.getCurrentUser()!.uid;
+    String? senderID = _authService.getCurrentUser()?.uid;
+
     return StreamBuilder(
-      stream: _chatService.getMessage(widget.receiverID, senderID),
+      stream: _chatService.getMessage(widget.receiverID, senderID ?? ''),
       builder: (context, snapshot) {
         //errors
         if (snapshot.hasError) {
@@ -126,9 +124,10 @@ class _ChatPageState extends State<ChatPage> {
         //list view
         return ListView(
           controller: _scrollController,
-          children: snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),
+          children: (snapshot.data as QuerySnapshot).docs.map((doc) => _buildMessageItem(doc)).toList(),
         );
-      });
+      },
+    );
   }
 
   //build message item
@@ -136,18 +135,19 @@ class _ChatPageState extends State<ChatPage> {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     //is current user
-    bool isCurentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
+    bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()?.uid;
 
     // align message to the right id the sender is the current user, otherwise left
-    var alignment = isCurentUser ? Alignment.centerRight : Alignment.centerLeft;
+    var alignment = isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
 
-
-    return Container(child: Column(
-      crossAxisAlignment: isCurentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      children: [
-        ChatBubble(message: data["message"], isCurentUser: isCurentUser,)
-      ],
-    ));
+    return Container(
+      child: Column(
+        crossAxisAlignment: isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: [
+          ChatBubble(message: data["message"], isCurentUser: isCurrentUser),
+        ],
+      ),
+    );
   }
 
   //build input
@@ -160,14 +160,14 @@ class _ChatPageState extends State<ChatPage> {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-              hintText: "Type a message",
+                hintText: "Type a message",
               ),
               obscureText: false,
               controller: _messageController,
               focusNode: MyfocusNode,
             ),
           ),
-      
+
           //send button
           Container(
             decoration: BoxDecoration(
@@ -175,7 +175,11 @@ class _ChatPageState extends State<ChatPage> {
               shape: BoxShape.circle,
             ),
             margin: EdgeInsets.only(right: 16),
-            child: IconButton(onPressed: sendMessage, icon: Icon(Icons.arrow_upward, color: Colors.white,),)),
+            child: IconButton(
+              onPressed: sendMessage,
+              icon: Icon(Icons.arrow_upward, color: Colors.white),
+            ),
+          ),
         ],
       ),
     );

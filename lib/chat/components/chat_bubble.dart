@@ -11,8 +11,8 @@ class ChatBubble extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isCurentUser
-        ? (Color.fromARGB(99, 80, 123, 232))
-        : (Colors.grey[900]),
+        ? (const Color.fromARGB(255, 134, 208, 203))
+        : (Color.fromARGB(255, 39, 142, 135)),
         borderRadius: BorderRadius.circular(16)
       ),
       padding: EdgeInsets.all(16),
@@ -21,8 +21,8 @@ class ChatBubble extends StatelessWidget {
         message,
         style: TextStyle(
           color: isCurentUser
-            ? Colors.white
-            : (Colors.black)),
+            ? Colors.black
+            : (Colors.white)),
       ),
     );
   }

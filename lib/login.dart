@@ -1,3 +1,4 @@
+import 'package:app/button.dart';
 import 'package:app/chat/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -36,78 +37,104 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 120,),
-              //logo
-              Image.asset(
-                'lib/images/logoblack.png',
-                width: 300,
-              ),
-
-              const SizedBox(height: 40,),
-
-              //welcome back message
-              Text(
-                'Welcome back, Thrilled to have you here again.',
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-              ),
-
-              const SizedBox(height: 20,),
-
-              //email
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
+      body: Center(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 10,),
+                //logo
+                Image.asset(
+                  'lib/images/leaf.png',
+                  width: 100,
                 ),
-                
-                obscureText: false,
-                controller: _emailController,
-              ),
-
-              const SizedBox(height: 16,),
-
-              //password
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Password',
+        
+                const SizedBox(height: 40,),
+        
+                //welcome back message
+                Text(
+                  'Welcome back, Thrilled to have you here again.',
+                  style: TextStyle(fontSize: 16, color: Colors.grey[900]),
                 ),
-                obscureText: true,
-                controller: _passwordController,
-              ),
-
-              const SizedBox(height: 40,),
-
-              //login button
-              ElevatedButton(
-                onPressed: () => login(context),
-                child: Text('Login'),
-              ),
-
-
-              const SizedBox(height: 20,),
-
-              //register now
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Not a member? ',
-                    style: TextStyle(color: Colors.grey[700]),
-                  ),
-                  GestureDetector(
-                    onTap: onTap,
-                    child: Text(
-                      '  Register now',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+        
+                const SizedBox(height: 20,),
+        
+                //email
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: TextField(
+        controller: _emailController,
+        obscureText: false,
+        decoration: InputDecoration(
+          hintText: '   Email',
+          hintStyle: TextStyle(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.75),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            borderRadius: BorderRadius.circular(16)
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+            borderRadius: BorderRadius.circular(16)
+          )
+        ),),
+                ),
+        
+                const SizedBox(height: 16,),
+        
+                //password
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: TextField(
+                          controller: _passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: '   Password',
+                            hintStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.primary.withOpacity(0.75),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary),
+                              borderRadius: BorderRadius.circular(16)
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderRadius: BorderRadius.circular(16)
+                            )
+                          ),),
+                ),
+        
+                const SizedBox(height: 40,),
+        
+                //login button
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: MyButton(buttontext: 'Login', onTap: () => login(context),)
+                ),
+        
+                const SizedBox(height: 20,),
+        
+                //register now
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Not a member? ',
+                      style: TextStyle(color: Colors.grey[700]),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    GestureDetector(
+                      onTap: onTap,
+                      child: Text(
+                        '  Register now',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

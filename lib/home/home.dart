@@ -3,21 +3,46 @@ import 'package:app/diary/diary.dart';
 import 'package:app/meditaionmethods.dart';
 import 'package:app/motivationalquotes.dart';
 import 'package:app/personalgrowthtips.dart';
-import 'package:app/relaxation.dart';
 import 'package:app/successstories.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class home_page extends StatefulWidget {
   const home_page({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<home_page> createState() => _home_pageState();
 }
 
 class _home_pageState extends State<home_page> {
+  String userName = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserName();
+  }
+
+  Future<void> _fetchUserName() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance
+              .collection('Users')
+              .doc(user.uid)
+              .get();
+      if (snapshot.exists) {
+        setState(() {
+          userName = snapshot.data()!['name'];
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +62,13 @@ class _home_pageState extends State<home_page> {
                     width: 16,
                   ),
                   Text(
-                    'Welcome Back\n............. !',
+                    'Welcome Back\n$userName !',
                     style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.displayLarge,
-                        color: const Color.fromARGB(255, 70, 66, 68),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                      textStyle: Theme.of(context).textTheme.displayLarge,
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Expanded(
                     child: Column(

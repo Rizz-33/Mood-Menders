@@ -1,5 +1,5 @@
-import 'package:app/button.dart';
-import 'package:app/lovemedstep9.dart';
+import 'package:app/components/button.dart';
+import 'package:app/lovekindnessmed/lovemedstep9.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -115,17 +115,18 @@ class _lovemedstep8_pageState extends State<lovemedstep8_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'When you are ready to conclude, bring your focus \nback to your own breath. Take a few moments \nto simply breathe and be present.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'When you are ready to conclude, bring your focus back to your own breath. Take a few moments to simply breathe and be present.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),

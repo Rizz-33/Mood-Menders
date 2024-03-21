@@ -1,5 +1,5 @@
-import 'package:app/button.dart';
-import 'package:app/lovemedstep1.dart';
+import 'package:app/components/button.dart';
+import 'package:app/lovekindnessmed/lovemedstep1.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -100,17 +100,17 @@ class _lovekindmed_pageState extends State<lovekindmed_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Loving-kindness meditation, also known as Metta \nmeditation, is a practice that cultivates feelings \nof compassion, love, and goodwill towards \noneself and others.  ',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.displayLarge,
-                        color: const Color.fromARGB(255, 70, 66, 68),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                        wordSpacing: 1.8,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Loving-kindness meditation, also known as Metta meditation, is a practice that cultivates feelings of compassion, love, and goodwill towards oneself and others.  ',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ],
@@ -229,17 +229,17 @@ class _lovekindmed_pageState extends State<lovekindmed_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    //message
-                    Text(
-                      'Begin by finding a quiet and comfortable place to \nsit or lie down. This could be a meditation cushion, \na chair, or any location where you feel at ease.',
-                      textAlign: TextAlign.justify,
-                      style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.displayLarge,
-                        color: const Color.fromARGB(255, 70, 66, 68),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                        wordSpacing: 1.5,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Text(
+                        'Begin by finding a quiet and comfortable place to sit or lie down. This could be a meditation cushion, a chair, or any location where you feel at ease.',
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 12,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ],
@@ -344,17 +344,17 @@ class _lovekindmed_pageState extends State<lovekindmed_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    //message
-                    Text(
-                      'Close your eyes and take a few deep breaths to \nrelax your body and clear your mind. Allow any \ntension or stress to dissolve.',
-                      textAlign: TextAlign.justify,
-                      style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.displayLarge,
-                        color: const Color.fromARGB(255, 70, 66, 68),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                        wordSpacing: 1.5,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Text(
+                        'Close your eyes and take a few deep breaths to relax your body and clear your mind. Allow any tension or stress to dissolve.',
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 12,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ],

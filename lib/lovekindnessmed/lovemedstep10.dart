@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/lovemedstep5.dart';
+import 'package:app/components/button.dart';
+import 'package:app/meditaionmethods.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class lovemedstep4_page extends StatefulWidget {
-  const lovemedstep4_page({
+class lovemedstep10_page extends StatefulWidget {
+  const lovemedstep10_page({
     super.key,
   });
 
   @override
-  State<lovemedstep4_page> createState() => _lovemedstep4_pageState();
+  State<lovemedstep10_page> createState() => _lovemedstep10_pageState();
 }
 
-class _lovemedstep4_pageState extends State<lovemedstep4_page> {
+class _lovemedstep10_pageState extends State<lovemedstep10_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +59,7 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
             child: Column(children: [
           //image
           const SizedBox(
-            height: 25,
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -70,7 +70,7 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step15.png',
+                    'lib/images/step8.png',
                     height: 240,
                   )
                 ],
@@ -78,7 +78,7 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 5,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -88,14 +88,18 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Step 04',
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'You have successfully completed Loving-kindness meditation',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 16,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ],
                 ),
@@ -114,17 +118,18 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Continue to bring other people into your thoughts, \nincluding acquaintances, colleagues, and even \nthose you may have conflicts with. Offer \nthe same loving-kindness wishes for them.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.7,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Remember, loving-kindness meditation is a practice that may evolve over time. You can adjust the phrases to better resonate with you. With consistent practice, it can have a positive impact on your well-being and relationships.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -132,19 +137,19 @@ class _lovemedstep4_pageState extends State<lovemedstep4_page> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 15,
           ),
           //continue button
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Next Step',
+              buttontext: 'Back to home page',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const lovemedstep5_page())),
+                        builder: (context) => (const meditaionmethods_page())),
                   );
                 }
               },

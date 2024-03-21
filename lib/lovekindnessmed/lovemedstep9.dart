@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/meditaionmethods.dart';
+import 'package:app/components/button.dart';
+import 'package:app/lovekindnessmed/lovemedstep10.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class lovemedstep10_page extends StatefulWidget {
-  const lovemedstep10_page({
+class lovemedstep9_page extends StatefulWidget {
+  const lovemedstep9_page({
     super.key,
   });
 
   @override
-  State<lovemedstep10_page> createState() => _lovemedstep10_pageState();
+  State<lovemedstep9_page> createState() => _lovemedstep9_pageState();
 }
 
-class _lovemedstep10_pageState extends State<lovemedstep10_page> {
+class _lovemedstep9_pageState extends State<lovemedstep9_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +59,7 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
             child: Column(children: [
           //image
           const SizedBox(
-            height: 20,
+            height: 25,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -70,7 +70,7 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step8.png',
+                    'lib/images/step5.png',
                     height: 240,
                   )
                 ],
@@ -78,7 +78,7 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 25,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -90,12 +90,11 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
                   children: [
                     //message
                     Text(
-                      'You have successfully completed \nLoving-kindness meditation',
-                      textAlign: TextAlign.center,
+                      'Step 09',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ],
@@ -115,17 +114,18 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Remember, loving-kindness meditation is a \npractice that may evolve over time. You can \nadjust the phrases to better resonate with you.\nWith consistent practice, it can have a positive \nimpact on your well-being and relationships.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Throughout the day, try to carry the feelings of loving-kindness with you. Extend compassion to yourself and others in your interactions.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -133,19 +133,19 @@ class _lovemedstep10_pageState extends State<lovemedstep10_page> {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 25,
           ),
           //continue button
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Back to home page',
+              buttontext: 'Next Step',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const meditaionmethods_page())),
+                        builder: (context) => (const lovemedstep10_page())),
                   );
                 }
               },

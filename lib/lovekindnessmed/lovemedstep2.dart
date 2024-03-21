@@ -1,5 +1,5 @@
-import 'package:app/button.dart';
-import 'package:app/lovemedstep3.dart';
+import 'package:app/components/button.dart';
+import 'package:app/lovekindnessmed/lovemedstep3.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -114,17 +114,18 @@ class _lovemedstep2_pageState extends State<lovemedstep2_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'After focusing on yourself, shift your \nattention to others. Begin with someone \nyou care deeply about,Repeat similar phrases \ndirected towards them. For example:\nMay [Name] be happy.\nMay [Name] be safe and free from harm.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'After focusing on yourself, shift your attention to others. Begin with someone you care deeply about,Repeat similar phrases directed towards them. For example: May [Name] be happy. May [Name] be safe and free from harm.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),

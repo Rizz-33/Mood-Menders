@@ -1,18 +1,19 @@
-import 'package:app/button.dart';
-import 'package:app/lovemedstep10.dart';
+import 'package:app/components/button.dart';
+import 'package:app/lovekindnessmed/lovemedstep8.dart';
+import 'package:app/lovekindnessmed/loving-kindnessmed.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class lovemedstep9_page extends StatefulWidget {
-  const lovemedstep9_page({
+class lovemedstep7_page extends StatefulWidget {
+  const lovemedstep7_page({
     super.key,
   });
 
   @override
-  State<lovemedstep9_page> createState() => _lovemedstep9_pageState();
+  State<lovemedstep7_page> createState() => _lovemedstep7_pageState();
 }
 
-class _lovemedstep9_pageState extends State<lovemedstep9_page> {
+class _lovemedstep7_pageState extends State<lovemedstep7_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,7 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
             child: Column(children: [
           //image
           const SizedBox(
-            height: 25,
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -70,7 +71,7 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step5.png',
+                    'lib/images/step2.png',
                     height: 240,
                   )
                 ],
@@ -90,7 +91,7 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
                   children: [
                     //message
                     Text(
-                      'Step 09',
+                      'Step 07',
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
@@ -114,17 +115,18 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Throughout the day, try to carry the feelings of \nloving-kindness with you. Extend compassion \nto yourself and others in your interactions.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Go at a pace that feels comfortable for you. Take your time with each person or group you bring to mind.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -132,7 +134,7 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 35,
           ),
           //continue button
           Padding(
@@ -144,7 +146,7 @@ class _lovemedstep9_pageState extends State<lovemedstep9_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (const lovemedstep10_page())),
+                        builder: (context) => (const lovemedstep8_page())),
                   );
                 }
               },

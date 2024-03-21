@@ -22,7 +22,7 @@ class Profile extends StatelessWidget {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
-              child: Image.asset('lib/images/logoIconBlack.png'),
+              child: Image.asset('lib/images/1.png'),
             ),
           ],
         ),
@@ -50,7 +50,7 @@ class Profile extends StatelessWidget {
                 ),
                 const SizedBox(height: 36.0),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -134,12 +134,31 @@ class Profile extends StatelessWidget {
                 ),
                 const SizedBox(height: 16.0),
               const SizedBox(height: 36.0),
-              ElevatedButton(
-                onPressed: () => logout(),
-                child: Text('Logout'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(380, 0), // Adjust the width as needed
-                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: GestureDetector(
+                        onTap: logout,
+                        child: Container(
+                            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: const LinearGradient(colors: <Color>[
+                  Color(0xFF77CB7E),
+                  Color(0xFFB4CAE8),
+                ]),
+                            ),
+                            padding: const EdgeInsets.all(20),
+                            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    ('Logout'),
+                    style: const TextStyle(
+                        color: const Color.fromARGB(255, 70, 66, 68),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+                            ))),
               ),
               SizedBox(height: 50,),
               Padding(
@@ -153,7 +172,7 @@ class Profile extends StatelessWidget {
                       onTap: () {
                         launch('https://www.nsbm.ac.lk/');
                       },
-                      child: Image.asset('lib/images/nsbmLogo.png', width: 60,),
+                      child: Image.asset('lib/images/1.png', width: 60,),
                     ),
                   ],
                 ),

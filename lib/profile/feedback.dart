@@ -1,5 +1,6 @@
+import 'package:app/main.dart'; // Assuming primaryColor is defined here
 import 'package:app/profile/button.dart';
-import 'package:app/profile/theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -12,11 +13,20 @@ class _FeedbackFormState extends State<FeedbackForm> {
   final _formKey = GlobalKey<FormState>();
   String _feedback = '';
   double _rating = 0;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      //back end logic
+
+      // Save feedback and rating to Firestore
+      _firestore.collection('feedback').add({
+        'feedback': _feedback,
+        'rating': _rating,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+
+      // Optionally, you can show a confirmation dialog or navigate to another screen
     }
   }
 
@@ -35,21 +45,21 @@ class _FeedbackFormState extends State<FeedbackForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
-                  cursorColor: accent75,
+                  cursorColor: primaryColor,
                   decoration: InputDecoration(
                     labelText: 'Feedback',
-                    labelStyle: TextStyle(color: accentColor),
+                    labelStyle: TextStyle(color: primaryColor),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: accentColor),
+                      borderSide: BorderSide(color: primaryColor),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: accentColor),
+                      borderSide: BorderSide(color: primaryColor),
                     ),
                     focusedErrorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: accentColor),
+                      borderSide: BorderSide(color: primaryColor),
                     ),
                     errorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: accentColor),
+                      borderSide: BorderSide(color: primaryColor),
                     ),
                   ),
                   validator: (value) {
@@ -68,7 +78,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   'Rate Us',
                   style: TextStyle(
                     fontSize: 16,
-                    color: accentColor,
+                    color: primaryColor,
                   ),
                   textAlign: TextAlign.left,
                 ),

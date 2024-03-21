@@ -1,3 +1,4 @@
+import 'package:app/main.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
@@ -33,8 +34,8 @@ class Button extends StatelessWidget {
       buttonColor = Colors.black;
       borderColor = Colors.black;
     } else {
-      buttonColor = color == 'white' ? Colors.white : Color(0xFFFF8400);
-      borderColor = color == 'white' ? Colors.white : Color(0xFFFF8400);
+      buttonColor = color == 'white' ? Colors.white : primaryColor;
+      borderColor = color == 'white' ? Colors.white : primaryColor;
     }
 
     return Padding(

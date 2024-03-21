@@ -33,7 +33,7 @@ class HomeWidget extends State<Navbar> {
           secondTab.Diary(),
           thirdTab.HomePage(),
           fourthTab.Stat(),
-          fifthTab.profile_page(),
+          fifthTab.Profile(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

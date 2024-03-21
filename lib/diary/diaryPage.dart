@@ -9,36 +9,36 @@ class DiaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(left: 10),
-        child: Text(
-          'SECRET DIARY',
-          style: GoogleFonts.poppins(
-            textStyle: Theme.of(context).textTheme.headlineMedium,
-            color: const Color.fromARGB(255, 70, 66, 68),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            'SECRET DIARY',
+            style: GoogleFonts.poppins(
+              textStyle: Theme.of(context).textTheme.headlineMedium,
+              color: const Color.fromARGB(255, 70, 66, 68),
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
+        titleSpacing: 4.0,
+        toolbarHeight: 70,
+        toolbarOpacity: 0.9,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(18),
+              bottomLeft: Radius.circular(18)),
+        ),
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 70, 66, 68),
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromARGB(255, 134, 208, 203),
       ),
-      titleSpacing: 4.0,
-      toolbarHeight: 70,
-      toolbarOpacity: 0.9,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(18),
-            bottomLeft: Radius.circular(18)),
-      ),
-      iconTheme: const IconThemeData(
-        color: Color.fromARGB(255, 70, 66, 68),
-      ),
-      elevation: 0.00,
-      backgroundColor: const Color.fromARGB(255, 134, 208, 203),
-    ),
       body: Container(
         width: 370,
         height: double.infinity,
@@ -72,7 +72,8 @@ class DiaryPage extends StatelessWidget {
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
-                              DateFormat('d MMMM yyyy, h:mm a').format(DateTime.now()),
+                              DateFormat('d MMMM yyyy, h:mm a')
+                                  .format(DateTime.now()),
                               style: const TextStyle(fontSize: 13),
                             ),
                           ],
@@ -92,7 +93,7 @@ class DiaryPage extends StatelessWidget {
                 ],
               ),
               const Padding(
-                padding: EdgeInsets.only(top: 10, bottom:10),
+                padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Column(
@@ -102,7 +103,8 @@ class DiaryPage extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 10.0),
                         child: Text(
                           'I got stickers from FOSS',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(

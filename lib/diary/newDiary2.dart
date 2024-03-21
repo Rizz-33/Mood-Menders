@@ -1,16 +1,31 @@
-import 'package:app/diary/appBarD.dart';
-import 'package:app/diary/diary.dart';
-import 'package:app/diary/gradientButton.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewDiary2 extends StatelessWidget {
   const NewDiary2({Key? key}) : super(key: key);
 
+  void saveDiary(String title, String description) async {
+    try {
+      await FirebaseFirestore.instance.collection('diary').add({
+        'title': title,
+        'description': description,
+        'timestamp': DateTime.now(),
+      });
+      print('Data written to Firestore successfully');
+    } catch (e) {
+      print('Error writing to Firestore: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    String title = ''; // Store the entered title
+    String description = ''; // Store the entered description
+
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: AppBar(
+        title: Text('New Diary'),
+      ),
       body: Stack(
         children: <Widget>[
           Container(
@@ -30,8 +45,7 @@ class NewDiary2 extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'Add a note',
-                      style: GoogleFonts.poppins(
-                        textStyle: Theme.of(context).textTheme.headlineMedium,
+                      style: TextStyle(
                         color: const Color.fromARGB(255, 70, 66, 68),
                         fontSize: 24,
                         fontWeight: FontWeight.w400,
@@ -44,7 +58,7 @@ class NewDiary2 extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8, top: 15),
                       child: Text(
                         'Title',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
                           color: const Color.fromARGB(255, 70, 66, 68),
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -52,9 +66,13 @@ class NewDiary2 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 8, top: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, top: 15),
                     child: TextField(
+                      onChanged: (value) {
+                        // Update the 'title' variable with the entered text
+                        title = value;
+                      },
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         filled: true,
@@ -68,7 +86,7 @@ class NewDiary2 extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8, top: 15),
                       child: Text(
                         'Description',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
                           color: const Color.fromARGB(255, 70, 66, 68),
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -77,11 +95,16 @@ class NewDiary2 extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8, top: 15, bottom: 15),
+                    padding:
+                        const EdgeInsets.only(left: 8, top: 15, bottom: 15),
                     child: Container(
                       color: Colors.white,
                       height: 150,
-                      child: const TextField(
+                      child: TextField(
+                        onChanged: (value) {
+                          // Update the 'description' variable with the entered text
+                          description = value;
+                        },
                         maxLines: null,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -91,15 +114,14 @@ class NewDiary2 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  GradientButton(
-                    buttonText: 'Save',
-                    enableIcon: false,
+                  ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Diary()),
-                      );
+                      // Save the entered title and description to Firestore
+                      saveDiary(title, description);
+                      // Navigate back to the previous screen
+                      Navigator.pop(context);
                     },
+                    child: Text('Save'),
                   ),
                 ],
               ),
@@ -109,12 +131,9 @@ class NewDiary2 extends StatelessWidget {
             top: 10,
             right: 10,
             child: IconButton(
-              icon: const Icon(Icons.close),
+              icon: Icon(Icons.close),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Diary()),
-                );
+                Navigator.pop(context);
               },
             ),
           ),

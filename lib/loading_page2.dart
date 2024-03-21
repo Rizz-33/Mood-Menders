@@ -1,4 +1,5 @@
 //import 'package:app/BreathAwareness/breathawarenessmed.dart';
+import 'package:app/diary/diary.dart';
 import 'package:app/meditaionmethods.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,7 @@ class loading_page2 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const meditaionmethods_page()),
+                builder: (context) => const Diary()),
           );
         },
         child: Scaffold(

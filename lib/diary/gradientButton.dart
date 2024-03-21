@@ -20,7 +20,10 @@ class GradientButton extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Color.fromARGB(255, 64, 205, 205),Color.fromARGB(255, 134, 208, 203)], // Define your gradient colors
+              colors: [
+                Color.fromARGB(255, 64, 205, 205),
+                Color.fromARGB(255, 134, 208, 203)
+              ], // Define your gradient colors
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -33,8 +36,13 @@ class GradientButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(buttonText, style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500)),
-                  if (enableIcon) Icon(Icons.arrow_forward, color: Colors.black),
+                  Text(buttonText,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500)),
+                  if (enableIcon)
+                    Icon(Icons.arrow_forward, color: Colors.black),
                 ],
               ),
             ),

@@ -16,7 +16,9 @@ class DatesWidget extends StatelessWidget {
         itemCount: 20,
         itemBuilder: (context, index) {
           DateTime date = today.add(Duration(days: index - 3));
-          bool isToday = date.day == today.day && date.month == today.month && date.year == today.year;
+          bool isToday = date.day == today.day &&
+              date.month == today.month &&
+              date.year == today.year;
 
           return Padding(
             padding: const EdgeInsets.all(8.0),

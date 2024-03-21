@@ -167,20 +167,23 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           //textfield
           Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Type a message",
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 13.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "     Type a message",
+                ),
+                obscureText: false,
+                controller: _messageController,
+                focusNode: MyfocusNode,
               ),
-              obscureText: false,
-              controller: _messageController,
-              focusNode: MyfocusNode,
             ),
           ),
 
           //send button
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 0, 47, 167),
+              color: Color.fromARGB(255, 39, 142, 135),
               shape: BoxShape.circle,
             ),
             margin: EdgeInsets.only(right: 16),

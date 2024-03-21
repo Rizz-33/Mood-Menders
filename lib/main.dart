@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
         //home: loading_page()
-        home: Chat(receiverEmail: 'aarruwanthie@gmail.com', receiverID: 'woweo3',),
+        home: ChatPage(receiverEmail: 'aarruwanthie@gmail.com', receiverID: 'tDsSD8nQySbmUwL7nNjuKL3GRp22')
         );
   }
 }

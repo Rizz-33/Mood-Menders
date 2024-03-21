@@ -5,18 +5,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
-
-class Chat extends StatefulWidget {
+class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
 
-  Chat({super.key, required this.receiverEmail, required this.receiverID});
+  ChatPage({super.key, required this.receiverEmail, required this.receiverID});
 
   @override
-  State<Chat> createState() => _ChatState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _ChatState extends State<Chat> {
+class _ChatPageState extends State<ChatPage> {
   //text controller
   final TextEditingController _messageController = TextEditingController();
 
@@ -146,7 +145,7 @@ class _ChatState extends State<Chat> {
     return Container(child: Column(
       crossAxisAlignment: isCurentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
-        ChatBubble(message: data["message"], isCurrentUser: isCurentUser,)
+        ChatBubble(message: data["message"], isCurentUser: isCurentUser,)
       ],
     ));
   }
@@ -161,7 +160,7 @@ class _ChatState extends State<Chat> {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Type a message here...'
+              hintText: "Type a message",
               ),
               obscureText: false,
               controller: _messageController,

@@ -166,11 +166,11 @@ class Profile extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(height: 50,),
-                    Text('Developed by undergraduate students\nfrom NSBM Green University.'),
+                    Text('Developed by undergraduate students\nfrom University of Plymouth, The UK.'),
                     SizedBox(width: 70,),
                     GestureDetector(
                       onTap: () {
-                        launch('https://www.nsbm.ac.lk/');
+                        launch('https://www.plymouth.ac.uk/');
                       },
                       child: Image.asset('lib/images/1.png', width: 60,),
                     ),

@@ -1,5 +1,5 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep3.dart';
+import 'package:app/components/button.dart';
+import 'package:app/movementmed/movementstep3.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -115,17 +115,18 @@ class _movementstep2_pageState extends State<movementstep2_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Bring your attention to your breath. Notice the \nsensation of inhaling and exhaling. Allow \nyour breath to flow naturally without \ntrying to control it.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Bring your attention to your breath. Notice the sensation of inhaling and exhaling. Allow your breath to flow naturally without trying to control it.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),

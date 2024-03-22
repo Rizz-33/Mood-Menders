@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/meditaionmethods.dart';
+import 'package:app/components/button.dart';
+import 'package:app/walkingmed/walkingstep3.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep10_page extends StatefulWidget {
-  const movementstep10_page({
+class walkingstep2_page extends StatefulWidget {
+  const walkingstep2_page({
     super.key,
   });
 
   @override
-  State<movementstep10_page> createState() => _movementstep10_pageState();
+  State<walkingstep2_page> createState() => _walkingstep2_pageState();
 }
 
-class _movementstep10_pageState extends State<movementstep10_page> {
+class _walkingstep2_pageState extends State<walkingstep2_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +26,12 @@ class _movementstep10_pageState extends State<movementstep10_page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'MOVEMENT-BASED \nMEDITATION',
+                  'WALKING MEDITATION',
                   style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
                       fontSize: 18,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w500),
                 ),
                 Image.asset(
                   'lib/images/leaf.png',
@@ -70,7 +70,7 @@ class _movementstep10_pageState extends State<movementstep10_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step15.png',
+                    'lib/images/step19.png',
                     height: 210,
                   )
                 ],
@@ -78,7 +78,7 @@ class _movementstep10_pageState extends State<movementstep10_page> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 25,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -90,12 +90,12 @@ class _movementstep10_pageState extends State<movementstep10_page> {
                   children: [
                     //message
                     Text(
-                      'You have successfully completed \nMovement-based meditation',
+                      'Step 02',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ],
@@ -115,17 +115,18 @@ class _movementstep10_pageState extends State<movementstep10_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Remember that movement-based meditation is a \npersonal practice, and there is no one-size-fits-all \napproach. It is important to listen to your body and \nadjust the practice to suit your needs and comfort \nlevel. With regular practice, you may find that \nmovement-based meditation can be a powerful \ntool for relaxation,mindfulness,and well-being.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Take a moment to set an intention for your walking meditation. This could be to cultivate mindfulness, find calmness, or simply enjoy the act of walking.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -139,13 +140,13 @@ class _movementstep10_pageState extends State<movementstep10_page> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Back to home page',
+              buttontext: 'Next Step',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (meditaionmethods_page())),
+                        builder: (context) => (walkingstep3_page())),
                   );
                 }
               },

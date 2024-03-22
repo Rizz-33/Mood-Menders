@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep9.dart';
+import 'package:app/components/button.dart';
+import 'package:app/movementmed/movementstep6.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep8_page extends StatefulWidget {
-  const movementstep8_page({
+class movementstep5_page extends StatefulWidget {
+  const movementstep5_page({
     super.key,
   });
 
   @override
-  State<movementstep8_page> createState() => _movementstep8_pageState();
+  State<movementstep5_page> createState() => _movementstep5_pageState();
 }
 
-class _movementstep8_pageState extends State<movementstep8_page> {
+class _movementstep5_pageState extends State<movementstep5_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
                       fontSize: 18,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w500),
                 ),
                 Image.asset(
                   'lib/images/leaf.png',
@@ -70,7 +70,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step10.png',
+                    'lib/images/step5.png',
                     height: 210,
                   )
                 ],
@@ -90,7 +90,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
                   children: [
                     //message
                     Text(
-                      'Step 08',
+                      'Step 05',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
@@ -104,7 +104,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 25,
           ),
           //para
           Padding(
@@ -115,17 +115,18 @@ class _movementstep8_pageState extends State<movementstep8_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Take a moment to reflect on your practice. Notice \nhow you feel both physically and mentally. \nAppreciate the time you dedicated to your \nwell-being.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'While moving, cultivate feelings of gratitude and positivity. Appreciate the ability to move and be present in this practice.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -133,7 +134,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 35,
           ),
           //continue button
           Padding(
@@ -145,7 +146,7 @@ class _movementstep8_pageState extends State<movementstep8_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (movementstep9_page())),
+                        builder: (context) => (movementstep6_page())),
                   );
                 }
               },

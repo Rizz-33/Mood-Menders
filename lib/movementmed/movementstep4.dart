@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep6.dart';
+import 'package:app/components/button.dart';
+import 'package:app/movementmed/movementstep5.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep5_page extends StatefulWidget {
-  const movementstep5_page({
+class movementstep4_page extends StatefulWidget {
+  const movementstep4_page({
     super.key,
   });
 
   @override
-  State<movementstep5_page> createState() => _movementstep5_pageState();
+  State<movementstep4_page> createState() => _movementstep4_pageState();
 }
 
-class _movementstep5_pageState extends State<movementstep5_page> {
+class _movementstep4_pageState extends State<movementstep4_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +70,7 @@ class _movementstep5_pageState extends State<movementstep5_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step5.png',
+                    'lib/images/step4.png',
                     height: 210,
                   )
                 ],
@@ -90,7 +90,7 @@ class _movementstep5_pageState extends State<movementstep5_page> {
                   children: [
                     //message
                     Text(
-                      'Step 05',
+                      'Step 04',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
@@ -104,7 +104,7 @@ class _movementstep5_pageState extends State<movementstep5_page> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 5,
           ),
           //para
           Padding(
@@ -115,17 +115,18 @@ class _movementstep5_pageState extends State<movementstep5_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'While moving, cultivate feelings of gratitude and \npositivity. Appreciate the ability to move \nand be present in this practice.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Keep your attention in the present moment. Be fully aware of each movement and the way your body feels. Let go of any distracting thoughts and return your focus to the movement and breath.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -133,7 +134,7 @@ class _movementstep5_pageState extends State<movementstep5_page> {
             ),
           ),
           const SizedBox(
-            height: 35,
+            height: 25,
           ),
           //continue button
           Padding(
@@ -145,7 +146,7 @@ class _movementstep5_pageState extends State<movementstep5_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (movementstep6_page())),
+                        builder: (context) => (movementstep5_page())),
                   );
                 }
               },

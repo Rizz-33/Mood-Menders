@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:app/activeUser/pages/DataPage.dart';
 import 'package:app/activeUser/service/database.dart';
+import 'package:app/chat/chat.dart';
+import 'package:app/chat/service/auth/auth_service.dart';
+import 'package:app/chat/service/chat/chat_service.dart';
 import 'package:app/components/MyTextField.dart';
 import 'package:app/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,7 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyProfilePage extends StatefulWidget {
-  const MyProfilePage({super.key});
+
+  final ChatService _chatService = ChatService();
+  final AuthService _authService = AuthService();
+
+  MyProfilePage({super.key});
 
   @override
   State<MyProfilePage> createState() => _MyProfilePageState();
@@ -55,42 +62,55 @@ class _MyProfilePageState extends State<MyProfilePage> {
         itemBuilder: (context, index){
           DocumentSnapshot ds=snapshot.data.docs[index];
           return 
-             Container(
-               margin: EdgeInsets.only(bottom: 20.0),
-               child: Material(
-                         elevation: 5.0,
-                         borderRadius: BorderRadius.circular(10),
-                         child: Container(
-                           padding: EdgeInsets.all(20),
-                           width: MediaQuery.of(context).size.width,
-                           decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                           child: Column(
-                             crossAxisAlignment: CrossAxisAlignment.start,
-                             children: [
-                               Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                 children: [
-                                   Text(ds["Name"], style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),fontWeight: FontWeight.bold, fontSize: 20),),
-                                   GestureDetector(
-                                     onTap: (){
-                                       namecontroller.text=ds["Name"];
-                                       agecontroller.text=ds["Age"];
-                                       addresscontroller.text=ds["Address"];
-                                       EditEmployeeDetails(ds["Id"]);
-                                     },
-                                     child: Icon(Icons.edit, color: primaryColor,)),
-                                 ],
-                               ),
-                               Row(
-                                 children: [
-                                   Text("I am "+ds["Age"]+" years old and I reside in ", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),),),
-                                   Text(ds["Address"]+".", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68)),),
-                                 ],
-                               ),
-                             ],
+             GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatPage(
+                            receiverEmail: ds['Name'],
+                            receiverID: ds['Id'],
+                          ),
+                        ),
+                      );
+                    },
+               child: Container(
+                 margin: EdgeInsets.only(bottom: 20.0),
+                 child: Material(
+                           elevation: 5.0,
+                           borderRadius: BorderRadius.circular(10),
+                           child: Container(
+                             padding: EdgeInsets.all(20),
+                             width: MediaQuery.of(context).size.width,
+                             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                             child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                               children: [
+                                 Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
+                                     Text(ds["Name"], style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),fontWeight: FontWeight.bold, fontSize: 20),),
+                                     GestureDetector(
+                                       onTap: (){
+                                         namecontroller.text=ds["Name"];
+                                         agecontroller.text=ds["Age"];
+                                         addresscontroller.text=ds["Address"];
+                                         EditEmployeeDetails(ds["Id"]);
+                                       },
+                                       child: Icon(Icons.edit, color: primaryColor,)),
+                                   ],
+                                 ),
+                                 Row(
+                                   children: [
+                                     Text("I am "+ds["Age"]+" years old and I reside in ", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),),),
+                                     Text(ds["Address"]+".", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68)),),
+                                   ],
+                                 ),
+                               ],
+                             ),
                            ),
                          ),
-                       ),
+               ),
              );
       })
       : Container();

@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep10.dart';
+import 'package:app/components/button.dart';
+import 'package:app/movementmed/movementstep8.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep9_page extends StatefulWidget {
-  const movementstep9_page({
+class movementstep7_page extends StatefulWidget {
+  const movementstep7_page({
     super.key,
   });
 
   @override
-  State<movementstep9_page> createState() => _movementstep9_pageState();
+  State<movementstep7_page> createState() => _movementstep7_pageState();
 }
 
-class _movementstep9_pageState extends State<movementstep9_page> {
+class _movementstep7_pageState extends State<movementstep7_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _movementstep9_pageState extends State<movementstep9_page> {
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
                       fontSize: 18,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w500),
                 ),
                 Image.asset(
                   'lib/images/leaf.png',
@@ -70,15 +70,16 @@ class _movementstep9_pageState extends State<movementstep9_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step13.png',
+                    'lib/images/step9.png',
                     height: 210,
                   )
                 ],
               ),
             ),
           ),
+
           const SizedBox(
-            height: 15,
+            height: 5,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -90,7 +91,7 @@ class _movementstep9_pageState extends State<movementstep9_page> {
                   children: [
                     //message
                     Text(
-                      'Step 09',
+                      'Step 07',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
@@ -115,17 +116,18 @@ class _movementstep9_pageState extends State<movementstep9_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Gently open your eyes if they were closed. Bring \nyour hands to your heart center (if standing) \nor rest them on your lap (if sitting). Take \na final moment of gratitude for your practice.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'After your movement practice, spend a few minutes in a final relaxation pose or seated meditation. This allows your body and mind to integrate the benefits of the practice.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -145,7 +147,7 @@ class _movementstep9_pageState extends State<movementstep9_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (movementstep10_page())),
+                        builder: (context) => (movementstep8_page())),
                   );
                 }
               },

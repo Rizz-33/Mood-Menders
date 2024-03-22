@@ -287,7 +287,7 @@ class _home_pageState extends State<home_page> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const motivationalquotes_page()),
+                      builder: (context) => motivationalquotes_page()),
                 );
               },
               child: Padding(
@@ -504,8 +504,7 @@ class _home_pageState extends State<home_page> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const relaxation_page(),
+                              builder: (context) => const relaxation_page(),
                             ),
                           );
                         },

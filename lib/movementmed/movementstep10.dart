@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep8.dart';
+import 'package:app/components/button.dart';
+import 'package:app/meditaionmethods.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep7_page extends StatefulWidget {
-  const movementstep7_page({
+class movementstep10_page extends StatefulWidget {
+  const movementstep10_page({
     super.key,
   });
 
   @override
-  State<movementstep7_page> createState() => _movementstep7_pageState();
+  State<movementstep10_page> createState() => _movementstep10_pageState();
 }
 
-class _movementstep7_pageState extends State<movementstep7_page> {
+class _movementstep10_pageState extends State<movementstep10_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _movementstep7_pageState extends State<movementstep7_page> {
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
                       fontSize: 18,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w400),
                 ),
                 Image.asset(
                   'lib/images/leaf.png',
@@ -70,14 +70,13 @@ class _movementstep7_pageState extends State<movementstep7_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step9.png',
+                    'lib/images/step15.png',
                     height: 210,
                   )
                 ],
               ),
             ),
           ),
-
           const SizedBox(
             height: 5,
           ),
@@ -89,15 +88,18 @@ class _movementstep7_pageState extends State<movementstep7_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Step 07',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'You have successfully completed Movement-based meditation',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 16,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ],
                 ),
@@ -116,17 +118,18 @@ class _movementstep7_pageState extends State<movementstep7_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'After your movement practice, spend a few \nminutes in a final relaxation pose or seated \nmeditation. This allows your body and mind \nto integrate the benefits of the practice.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Remember that movement-based meditation is a personal practice, and there is no one-size-fits-all approach. It is important to listen to your body and adjust the practice to suit your needs and comfort level. With regular practice, you may find that movement-based meditation can be a powerful tool for relaxation,mindfulness,and well-being.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -140,13 +143,13 @@ class _movementstep7_pageState extends State<movementstep7_page> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: MyButton(
-              buttontext: 'Next Step',
+              buttontext: 'Back to home page',
               onTap: () {
                 {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (movementstep8_page())),
+                        builder: (context) => (meditaionmethods_page())),
                   );
                 }
               },

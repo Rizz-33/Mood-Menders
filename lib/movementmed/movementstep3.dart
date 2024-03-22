@@ -1,18 +1,18 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep7.dart';
+import 'package:app/components/button.dart';
+import 'package:app/movementmed/movementstep4.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementstep6_page extends StatefulWidget {
-  const movementstep6_page({
+class movementstep3_page extends StatefulWidget {
+  const movementstep3_page({
     super.key,
   });
 
   @override
-  State<movementstep6_page> createState() => _movementstep6_pageState();
+  State<movementstep3_page> createState() => _movementstep3_pageState();
 }
 
-class _movementstep6_pageState extends State<movementstep6_page> {
+class _movementstep3_pageState extends State<movementstep3_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +70,7 @@ class _movementstep6_pageState extends State<movementstep6_page> {
                 children: [
                   //image
                   Image.asset(
-                    'lib/images/step8 .png',
+                    'lib/images/step5.png',
                     height: 210,
                   )
                 ],
@@ -78,7 +78,7 @@ class _movementstep6_pageState extends State<movementstep6_page> {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 5,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -90,12 +90,12 @@ class _movementstep6_pageState extends State<movementstep6_page> {
                   children: [
                     //message
                     Text(
-                      'Step 06',
+                      'Step 03',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 18,
+                          fontSize: 17,
                           fontWeight: FontWeight.w600),
                     ),
                   ],
@@ -115,17 +115,18 @@ class _movementstep6_pageState extends State<movementstep6_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'If your practice involves transitioning between \nmovements or poses, do so with awareness and \ngrace. Pay attention to the sensations and \nalignment of your body.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 13,
-                          height: 1.2,
-                          wordSpacing: 1.8,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Engage in your chosen movement practice (yoga, tai chi, qigong). Pay close attention to the sensations in your body as you move. Focus on the rhythm of your movements, the stretch of your muscles, and the coordination of your breath.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -145,7 +146,7 @@ class _movementstep6_pageState extends State<movementstep6_page> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => (movementstep7_page())),
+                        builder: (context) => (movementstep4_page())),
                   );
                 }
               },

@@ -1,18 +1,19 @@
-import 'package:app/button.dart';
-import 'package:app/movementstep1.dart';
+import 'package:app/components/button.dart';
+import 'package:app/meditaionmethods.dart';
+import 'package:app/walkingmed/walkingstep1.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class movementmed_page extends StatefulWidget {
-  const movementmed_page({
+class walkingmed_page extends StatefulWidget {
+  const walkingmed_page({
     super.key,
   });
 
   @override
-  State<movementmed_page> createState() => _movementmed_pageState();
+  State<walkingmed_page> createState() => _walkingmed_pageState();
 }
 
-class _movementmed_pageState extends State<movementmed_page> {
+class _walkingmed_pageState extends State<walkingmed_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class _movementmed_pageState extends State<movementmed_page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'MOVEMENT-BASED \nMEDITATION',
+                  'WALKING MEDITATION',
                   style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
@@ -100,17 +101,18 @@ class _movementmed_pageState extends State<movementmed_page> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //message
-                    Text(
-                      'Movement-based meditation is a practice that \ncombines mindfulness with physical movements, \noften derived from practices like yoga, tai chi, \nqigong, or other similar disciplines. ',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          textStyle: Theme.of(context).textTheme.displayLarge,
-                          color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
-                          wordSpacing: 1.6,
-                          height: 1.4,
-                          fontWeight: FontWeight.w400),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Text(
+                        'Walking meditation is a mindfulness practice that involves bringing your attention to the act of walking. It can be a calming and grounding way to cultivate mindfulness in motion.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            color: const Color.fromARGB(255, 70, 66, 68),
+                            fontSize: 13,
+                            height: 1.2,
+                            wordSpacing: 2.5,
+                            fontWeight: FontWeight.w400),
+                      ),
                     ),
                   ],
                 ),
@@ -156,7 +158,7 @@ class _movementmed_pageState extends State<movementmed_page> {
 
           //preconsiderations
           const SizedBox(
-            height: 15,
+            height: 5,
           ),
 
           Padding(
@@ -203,15 +205,13 @@ class _movementmed_pageState extends State<movementmed_page> {
                       children: [
                         //message
                         Text(
-                          'Comfortable \nSpace',
+                          'Comfortable \n quite Space',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 12,
-                              height: 1.2,
-                              wordSpacing: 2.5,
                               fontWeight: FontWeight.w300),
                         ),
                       ],
@@ -286,8 +286,6 @@ class _movementmed_pageState extends State<movementmed_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 12,
-                              height: 1.2,
-                              wordSpacing: 2.5,
                               fontWeight: FontWeight.w300),
                         ),
                       ],
@@ -321,8 +319,6 @@ class _movementmed_pageState extends State<movementmed_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 12,
-                              height: 1.2,
-                              wordSpacing: 2.5,
                               fontWeight: FontWeight.w300),
                         ),
                       ],
@@ -334,7 +330,7 @@ class _movementmed_pageState extends State<movementmed_page> {
           ),
 
           const SizedBox(
-            height: 35,
+            height: 25,
           ),
           //continue button
           Padding(
@@ -346,7 +342,7 @@ class _movementmed_pageState extends State<movementmed_page> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => (const movementstep1_page())),
+                          builder: (context) => (const walkingstep1_page())),
                     );
                   }
                 },

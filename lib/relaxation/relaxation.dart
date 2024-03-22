@@ -1,4 +1,3 @@
-
 import 'package:app/meditaionmethods.dart';
 import 'package:app/relaxation/aroma.dart';
 import 'package:app/relaxation/quickrelaxation.dart';
@@ -35,10 +34,10 @@ class _relaxation_pageState extends State<relaxation_page> {
                     textStyle: Theme.of(context).textTheme.displayLarge,
                     color: const Color.fromARGB(255, 70, 66, 68),
                     fontSize: 22,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.w500),
               ),
               Image.asset(
-                'lib/images/newbg.png',
+                'lib/images/leaf.png',
                 height: 72,
               )
             ],
@@ -79,9 +78,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -130,9 +129,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: const Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: const Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -188,9 +187,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: const Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: const Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -239,9 +238,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: const Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: const Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -297,9 +296,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: const Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: const Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -349,9 +348,9 @@ class _relaxation_pageState extends State<relaxation_page> {
                     height: 175,
                     width: 150,
                     decoration: BoxDecoration(
-                        color: const Color.fromARGB(251, 215, 225, 238),
+                        color: const Color.fromARGB(255, 175, 213, 210),
                         border: Border.all(
-                          color: const Color.fromARGB(255, 215, 225, 238),
+                          color: const Color.fromARGB(255, 175, 213, 210),
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(12)),

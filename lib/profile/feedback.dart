@@ -15,18 +15,56 @@ class _FeedbackFormState extends State<FeedbackForm> {
   double _rating = 0;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      // Save feedback and rating to Firestore
-      _firestore.collection('feedback').add({
-        'feedback': _feedback,
-        'rating': _rating,
-        'timestamp': FieldValue.serverTimestamp(),
-      });
+      try {
+        // Save feedback and rating to Firestore
+        await _firestore.collection('feedback').add({
+          'feedback': _feedback,
+          'rating': _rating,
+          'timestamp': FieldValue.serverTimestamp(),
+        });
 
-      // Optionally, you can show a confirmation dialog or navigate to another screen
+        // Show success message
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Feedback Submitted'),
+              content: Text('Thank you for your feedback!'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } catch (e) {
+        // Show error message
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Failed to submit feedback. Please try again later.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     }
   }
 

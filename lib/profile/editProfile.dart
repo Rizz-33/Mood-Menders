@@ -21,11 +21,11 @@ class _EditProfileState extends State<EditProfile> {
       try {
         // Get the current user
         User? user = FirebaseAuth.instance.currentUser;
-        
+
         // Check if the user is authenticated
         if (user != null) {
           String uid = user.uid;
-          
+
           // Update Firestore database with user's profile data
           await FirebaseFirestore.instance.collection('Users').doc(uid).update({
             'name': _name,
@@ -34,32 +34,63 @@ class _EditProfileState extends State<EditProfile> {
             'avatar': _selectedAvatar,
           });
 
-          // Show success message
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Submitted Successfully!'),
-              backgroundColor: Colors.green,
-            ),
+          // Show success message dialog
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Success'),
+                content: Text('Submitted Successfully!'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.pop(context);
+                    },
+                    child: Text('OK'),
+                  ),
+                ],
+              );
+            },
           );
-
-          // Close the edit profile screen
-          Navigator.pop(context);
         } else {
           // Show error message if user is not authenticated
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('User not authenticated.'),
-              backgroundColor: Colors.red,
-            ),
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Error'),
+                content: Text('User not authenticated.'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('OK'),
+                  ),
+                ],
+              );
+            },
           );
         }
       } catch (e) {
-        // Show error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            backgroundColor: Colors.red,
-          ),
+        // Show error message dialog
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Error: $e'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
         );
       }
     }

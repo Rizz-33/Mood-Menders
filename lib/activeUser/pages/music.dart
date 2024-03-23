@@ -23,9 +23,6 @@ class _MusicPageState extends State<MusicPage> {
   void goToSong(int songIndex) {
     playlistProvider.currentSongIndex = songIndex;
 
-    // Start playing the selected song
-    playlistProvider.togglePlayPause();
-
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -47,7 +44,7 @@ class _MusicPageState extends State<MusicPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'MUSIC PLAYER',
+                'MUSIC PLAYERS',
                 style: GoogleFonts.poppins(
                     textStyle: Theme.of(context).textTheme.displayLarge,
                     color: const Color.fromARGB(255, 70, 66, 68),

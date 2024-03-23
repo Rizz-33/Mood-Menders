@@ -4,6 +4,7 @@ import 'package:app/motivationalquotes.dart';
 import 'package:app/personalgrowthtips.dart';
 import 'package:app/relaxation/relaxation.dart';
 import 'package:app/successstories.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

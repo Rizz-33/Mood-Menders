@@ -4,42 +4,45 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
-  // Text editing controllers
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmController = TextEditingController();
 
-  // Callback function to navigate to login page
   final void Function()? onTap;
 
   RegisterPage({Key? key, required this.onTap});
 
-  // Register method
-  Future<void> register(BuildContext context) async {
-    // Get Firebase authentication instance
-    final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? selectedAvatar; // Store the selected avatar image path
 
-    // Get Firestore instance
+  Future<void> register(BuildContext context) async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-    // Only if the passwords are matching create user
+    if (selectedAvatar == null) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Please select an avatar!"),
+        ),
+      );
+      return;
+    }
+
     if (_passwordController.text == _passwordConfirmController.text) {
       try {
-        // Create user with email and password
         UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
 
-        // Add user's name to Firebase user profile
         await userCredential.user!.updateDisplayName(_nameController.text);
 
-        // Store user's name, email, and password in Firestore
         await _firestore.collection('Users').doc(userCredential.user!.uid).set({
           'name': _nameController.text,
           'email': _emailController.text,
           'password': _passwordController.text,
+          'avatar': selectedAvatar, // Include selected avatar in user profile
         });
       } catch (e) {
         showDialog(
@@ -50,7 +53,6 @@ class RegisterPage extends StatelessWidget {
         );
       }
     } else {
-      // Show error if passwords don't match
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -71,23 +73,37 @@ class RegisterPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 10,),
-                // Logo
                 Image.asset(
                   'lib/images/leaf.png',
                   width: 100,
                 ),
-        
                 const SizedBox(height: 40,),
-        
-                // Welcome message
                 Text(
-                  'Welcome back, Thrilled to have you here again.',
+                  "Welcome! Let's Mend Your Moods...",
                   style: TextStyle(fontSize: 16, color: Colors.grey[900]),
                 ),
-        
                 const SizedBox(height: 20,),
-        
-                // Name text field
+                // Add Avatar Selection UI
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (int i = 1; i <= 5; i++)
+                      GestureDetector(
+                        onTap: () {
+                          // Set the selected avatar image path
+                          selectedAvatar = 'lib/images/loveearth ($i).png';
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'lib/images/loveearth ($i).png',
+                            width: 50,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
@@ -109,10 +125,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-        
                 const SizedBox(height: 16,),
-        
-                // Email text field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
@@ -134,10 +147,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-        
                 const SizedBox(height: 16,),
-        
-                // Password text field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
@@ -159,10 +169,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                
                 const SizedBox(height: 16,),
-                
-                // Confirm Password text field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
@@ -184,18 +191,12 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-        
                 const SizedBox(height: 40,),
-        
-                // Register button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: MyButton(buttontext: 'Register', onTap: () => register(context),)
                 ),
-        
                 const SizedBox(height: 20,),
-        
-                // Register now link
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

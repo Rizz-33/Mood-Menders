@@ -52,10 +52,14 @@ class Diary extends StatelessWidget {
                   ),
                 ],
               ),
-              Image.asset(
-                'lib/images/diary1.png',
-                fit: BoxFit.cover,
-              ),
+              Container(
+                height: 140, // Set the height here
+                width: 140, // Set the width here
+                child: Image.asset(
+                  'lib/images/diary1.png',
+                  fit: BoxFit.cover,
+                ),
+              )
             ],
           ),
         ),

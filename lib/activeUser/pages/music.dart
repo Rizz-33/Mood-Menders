@@ -23,6 +23,9 @@ class _MusicPageState extends State<MusicPage> {
   void goToSong(int songIndex) {
     playlistProvider.currentSongIndex = songIndex;
 
+    // Start playing the selected song
+    playlistProvider.togglePlayPause();
+
     Navigator.push(
       context,
       MaterialPageRoute(

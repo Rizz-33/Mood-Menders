@@ -117,7 +117,7 @@ class _personalgrowthtips_pageState extends State<personalgrowthtips_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 2.0,
                           fontWeight: FontWeight.w400),
@@ -223,7 +223,9 @@ class _personalgrowthtips_pageState extends State<personalgrowthtips_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
+                          height: 1.2,
+                          wordSpacing: 2.0,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
@@ -328,7 +330,9 @@ class _personalgrowthtips_pageState extends State<personalgrowthtips_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
+                          height: 1.2,
+                          wordSpacing: 2.0,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
@@ -433,7 +437,9 @@ class _personalgrowthtips_pageState extends State<personalgrowthtips_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
+                          height: 1.2,
+                          wordSpacing: 2.0,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
@@ -538,7 +544,9 @@ class _personalgrowthtips_pageState extends State<personalgrowthtips_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
+                          height: 1.2,
+                          wordSpacing: 2.0,
                           fontWeight: FontWeight.w400),
                     ),
                   ],

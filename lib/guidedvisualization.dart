@@ -24,12 +24,12 @@ class _guidedvis_pageState extends State<guidedvis_page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'GUILDED \nVISUALIZATION',
+                  'GUILDED VISUALIZATION',
                   style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.displayLarge,
                       color: const Color.fromARGB(255, 70, 66, 68),
                       fontSize: 18,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w600),
                 ),
                 Image.asset(
                   'lib/images/leaf.png',
@@ -105,7 +105,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 1.8,
                           fontWeight: FontWeight.w400),
@@ -199,7 +199,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600),
                     ),
                     Expanded(
@@ -237,7 +237,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 1.8,
                           fontWeight: FontWeight.w400),
@@ -307,7 +307,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600),
                     ),
                     Expanded(
@@ -345,7 +345,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 1.8,
                           fontWeight: FontWeight.w400),
@@ -415,7 +415,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600),
                     ),
                     Expanded(
@@ -453,7 +453,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 1.8,
                           fontWeight: FontWeight.w400),
@@ -523,7 +523,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600),
                     ),
                     Expanded(
@@ -561,7 +561,7 @@ class _guidedvis_pageState extends State<guidedvis_page> {
                       style: GoogleFonts.poppins(
                           textStyle: Theme.of(context).textTheme.displayLarge,
                           color: const Color.fromARGB(255, 70, 66, 68),
-                          fontSize: 12,
+                          fontSize: 13,
                           height: 1.2,
                           wordSpacing: 1.8,
                           fontWeight: FontWeight.w400),

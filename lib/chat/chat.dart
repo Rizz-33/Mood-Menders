@@ -8,13 +8,15 @@ class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
 
-  ChatPage({super.key, required this.receiverEmail, required this.receiverID});
+  ChatPage({Key? key, required this.receiverEmail, required this.receiverID}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
+  late String receiverName = ''; // Add this variable to store the receiver's name
+
   //text controller
   final TextEditingController _messageController = TextEditingController();
 
@@ -29,24 +31,19 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
 
-    //add listener to focus node
+    // Fetch receiver's name from Firestore
+    _fetchReceiverName();
+
+    // Add listener to focus node
     MyfocusNode.addListener(() {
       if (MyfocusNode.hasFocus) {
-        //cause a delay so that the keyboard has time to show up
-
-        //amount of remaining space will be calculated
-
-        //scroll down
-
+        // Cause a delay so that the keyboard has time to show up
         Future.delayed(const Duration(milliseconds: 500), () => scrollDown());
       }
     });
 
-    //wait a bit for listview to be built, then scroll to bottom
-    Future.delayed(
-      const Duration(milliseconds: 500),
-      () => scrollDown(),
-    );
+    // Wait a bit for listview to be built, then scroll to bottom
+    Future.delayed(const Duration(milliseconds: 500), () => scrollDown());
   }
 
   @override
@@ -65,6 +62,28 @@ class _ChatPageState extends State<ChatPage> {
       curve: Curves.fastEaseInToSlowEaseOut,
     );
   }
+
+  // Fetch receiver's name from Firestore
+  void _fetchReceiverName() async {
+  DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection(' Users').doc(widget.receiverID).get();
+  if (snapshot.exists) {
+    var data = snapshot.data() as Map<String, dynamic>?;
+    if (data != null && data['name'] != null) {
+      setState(() {
+        receiverName = data['name'];
+      });
+    } else {
+      setState(() {
+        receiverName = 'Name not found';
+      });
+    }
+  } else {
+    setState(() {
+      receiverName = 'User not found';
+    });
+  }
+}
+
 
   //send message
   void sendMessage() async {
@@ -92,7 +111,7 @@ class _ChatPageState extends State<ChatPage> {
               width: 36,
             ),
             const SizedBox(width: 24),
-            Text(widget.receiverEmail),
+            receiverName != null ? Text(receiverName) : Text('Loading...'), // Display receiver's name or a loading indicator
           ],
         ),
         backgroundColor: Colors.transparent,

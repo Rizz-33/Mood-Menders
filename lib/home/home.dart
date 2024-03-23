@@ -4,7 +4,6 @@ import 'package:app/motivationalquotes.dart';
 import 'package:app/personalgrowthtips.dart';
 import 'package:app/relaxation/relaxation.dart';
 import 'package:app/successstories.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,20 +28,21 @@ class _home_pageState extends State<home_page> {
   }
 
   Future<void> _fetchUserName() async {
-    final User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final DocumentSnapshot<Map<String, dynamic>> snapshot =
-          await FirebaseFirestore.instance
-              .collection('Users')
-              .doc(user.uid)
-              .get();
-      if (snapshot.exists) {
-        setState(() {
-          userName = snapshot.data()!['name']?.toString() ?? '';
-        });
-      }
+  final User? user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    final DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await FirebaseFirestore.instance
+            .collection('Users')
+            .doc(user.uid)
+            .get();
+    if (snapshot.exists && mounted) {
+      setState(() {
+        userName = snapshot.data()!['name'].toString();
+      });
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

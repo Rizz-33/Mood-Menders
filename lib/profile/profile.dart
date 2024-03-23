@@ -38,7 +38,7 @@ class _ProfileState extends State<Profile> {
               .get();
       if (snapshot.exists) {
         setState(() {
-          userName = snapshot.data()!['name'];
+          userName = snapshot.data()!['name'].toString();
           userEmail = snapshot.data()!['email'];
           selectedAvatar = snapshot.data()!['avatar'];
         });

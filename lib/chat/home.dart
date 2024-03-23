@@ -17,51 +17,51 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-      title: Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0,),
-                  child: Text(
-                    'CHAT',
-                    style: GoogleFonts.poppins(
-                      textStyle: Theme.of(context).textTheme.headlineMedium,
-                      color: const Color.fromARGB(255, 70, 66, 68),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
+        title: Padding(
+          padding: const EdgeInsets.only(
+            left: 10,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5.0,),
+                    child: Text(
+                      'CHAT',
+                      style: GoogleFonts.poppins(
+                        textStyle: Theme.of(context).textTheme.headlineMedium,
+                        color: const Color.fromARGB(255, 70, 66, 68),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Image.asset(
-              'lib/images/leaf2.png',
-              fit: BoxFit.cover,
-            ),
-          ],
+                ],
+              ),
+              Image.asset(
+                'lib/images/leaf2.png',
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
         ),
+        titleSpacing: 4.0,
+        toolbarHeight: 60,
+        toolbarOpacity: 0.9,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(18),
+              bottomLeft: Radius.circular(18)),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromARGB(255, 134, 208, 203),
       ),
-      titleSpacing: 4.0,
-      toolbarHeight: 60,
-      toolbarOpacity: 0.9,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(18),
-            bottomLeft: Radius.circular(18)),
-      ),
-      iconTheme: const IconThemeData(
-        color: Colors.black,
-      ),
-      elevation: 0.00,
-      backgroundColor: const Color.fromARGB(255, 134, 208, 203),
-    ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         child: _buildUserList(),
@@ -95,8 +95,8 @@ class HomePage extends StatelessWidget {
 
   // Build individual list tile for user
   Widget _buildUserListItem(Map<String, dynamic>? userData, BuildContext context) {
-    // Check if userData is not null
-    if (userData != null) {
+    // Check if userData is not null and contains the 'name' key
+    if (userData != null && userData.containsKey('name')) {
       // Display users except the current user
       if (userData['name'] != null && _authService.getCurrentUser() != null && userData['email'] != _authService.getCurrentUser()!.email) {
         return UserTile(
@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
         );
       }
     }
-    // Return an empty container if userData is null or email is null
+    // Return an empty container if userData is null or does not contain the 'name' key
     return Container();
   }
 }

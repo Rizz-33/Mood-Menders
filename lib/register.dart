@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
-  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmController = TextEditingController();
@@ -30,19 +30,31 @@ class RegisterPage extends StatelessWidget {
     }
 
     if (_passwordController.text == _passwordConfirmController.text) {
+      // Check if the username is unique
+      QuerySnapshot usernameCheck = await _firestore.collection('Users').where('username', isEqualTo: _usernameController.text).get();
+      if (usernameCheck.docs.isNotEmpty) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Username already exists!"),
+          ),
+        );
+        return;
+      }
+
       try {
         UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
 
-        await userCredential.user!.updateDisplayName(_nameController.text);
+        await userCredential.user!.updateDisplayName(_usernameController.text);
 
         await _firestore.collection('Users').doc(userCredential.user!.uid).set({
-          'name': _nameController.text,
+          'username': _usernameController.text, // Change 'name' to 'username'
           'email': _emailController.text,
           'password': _passwordController.text,
-          'avatar': selectedAvatar, // Include selected avatar in user profile
+          'avatar': selectedAvatar,
         });
       } catch (e) {
         showDialog(
@@ -83,34 +95,42 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.grey[900]),
                 ),
                 const SizedBox(height: 20,),
-                // Add Avatar Selection UI
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (int i = 1; i <= 5; i++)
                       GestureDetector(
                         onTap: () {
-                          // Set the selected avatar image path
                           selectedAvatar = 'lib/images/loveearth ($i).png';
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(
-                            'lib/images/loveearth ($i).png',
-                            width: 50,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: selectedAvatar == 'lib/images/loveearth ($i).png' ? Colors.blue : Colors.transparent,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Image.asset(
+                              'lib/images/loveearth ($i).png',
+                              width: 50,
+                            ),
                           ),
                         ),
                       ),
+
                   ],
                 ),
                 const SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
-                    controller: _nameController,
+                    controller: _usernameController, // Change _nameController to _usernameController
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: '   Name',
+                      hintText: '   Username', // Change hint text
                       hintStyle: TextStyle(
                         color: Theme.of(context).colorScheme.primary.withOpacity(0.75),
                       ),
@@ -203,6 +223,7 @@ class RegisterPage extends StatelessWidget {
                     Text(
                       'Already have an account? ',
                       style: TextStyle(color: Colors.grey[700]),
+
                     ),
                     GestureDetector(
                       onTap: onTap,

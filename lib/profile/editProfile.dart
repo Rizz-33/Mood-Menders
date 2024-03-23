@@ -128,7 +128,7 @@ class _EditProfileState extends State<EditProfile> {
                             width: 50,
                             // Highlight the selected avatar
                             color: _selectedAvatar == 'lib/images/loveearth ($i).png'
-                                ? Colors.blue
+                                ? Color.fromARGB(255, 28, 186, 197)
                                 : null,
                           ),
                         ),

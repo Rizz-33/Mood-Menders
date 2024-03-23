@@ -53,8 +53,8 @@ class Diary extends StatelessWidget {
                 ],
               ),
               Container(
-                height: 140, // Set the height here
-                width: 140, // Set the width here
+                height: 130, // Set the height here
+                width: 130, // Set the width here
                 child: Image.asset(
                   'lib/images/diary1.png',
                   fit: BoxFit.cover,

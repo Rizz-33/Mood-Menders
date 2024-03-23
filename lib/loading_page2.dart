@@ -1,6 +1,4 @@
-//import 'package:app/BreathAwareness/breathawarenessmed.dart';
 import 'package:app/chat/service/auth/auth_gate.dart';
-import 'package:app/diary/diary.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,8 +13,7 @@ class loading_page2 extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => const Diary()),
+            MaterialPageRoute(builder: (context) => const AuthGate()),
           );
         },
         child: Scaffold(
@@ -24,7 +21,7 @@ class loading_page2 extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(children: [
-              const SizedBox(height: 70),
+              const SizedBox(height: 100),
               //icon
               GestureDetector(
                 child: Container(
@@ -58,7 +55,7 @@ class loading_page2 extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 85),
+              const SizedBox(height: 190),
 
               GestureDetector(
                 child: Image.asset(
@@ -67,8 +64,7 @@ class loading_page2 extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => AuthGate()),
+                    MaterialPageRoute(builder: (context) => AuthGate()),
                   );
                 },
               )

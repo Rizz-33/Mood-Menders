@@ -37,7 +37,7 @@ class _home_pageState extends State<home_page> {
               .get();
       if (snapshot.exists) {
         setState(() {
-          userName = snapshot.data()!['name'];
+          userName = snapshot.data()!['name']?.toString() ?? '';
         });
       }
     }

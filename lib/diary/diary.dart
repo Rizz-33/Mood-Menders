@@ -1,5 +1,4 @@
 import 'package:app/diary/dates.dart';
-import 'package:app/diary/diaryPage.dart';
 import 'package:app/diary/myButton.dart';
 import 'package:app/diary/newDiary.dart';
 import 'package:app/diary/todaysdate.dart';

@@ -1,5 +1,4 @@
 import 'package:app/chat/chat.dart';
-import 'package:app/chat/components/customdrawer.dart';
 import 'package:app/chat/components/usertile.dart';
 import 'package:app/chat/service/auth/auth_service.dart';
 import 'package:app/chat/service/chat/chat_service.dart';
@@ -63,7 +62,6 @@ class HomePage extends StatelessWidget {
       elevation: 0.00,
       backgroundColor: const Color.fromARGB(255, 134, 208, 203),
     ),
-      drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         child: _buildUserList(),
@@ -100,9 +98,9 @@ class HomePage extends StatelessWidget {
     // Check if userData is not null
     if (userData != null) {
       // Display users except the current user
-      if (userData['email'] != null && _authService.getCurrentUser() != null && userData['email'] != _authService.getCurrentUser()!.email) {
+      if (userData['name'] != null && _authService.getCurrentUser() != null && userData['email'] != _authService.getCurrentUser()!.email) {
         return UserTile(
-          text: userData['email'],
+          text: userData['name'],
           isNewMessage: false,
           onTap: () {
             // Tapped on a user -> go to chat
@@ -111,7 +109,7 @@ class HomePage extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => ChatPage(
                   receiverEmail: userData['email'],
-                  receiverID: userData['uid'],
+                  receiverID: userData['uid'].toString(),
                 ),
               ),
             );

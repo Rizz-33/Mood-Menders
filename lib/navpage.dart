@@ -1,4 +1,4 @@
-import 'package:app/activeUser/pages/myprofile.dart' as thirdTab;
+import 'package:app/chat/home.dart' as thirdTab;
 import 'package:app/diary/diary.dart' as secondTab;
 import 'package:app/home/home.dart' as firstTab;
 import 'package:app/profile/profile.dart' as fifthTab;
@@ -31,7 +31,7 @@ class HomeWidget extends State<Navbar> {
         children: <Widget>[
           firstTab.home_page(),
           secondTab.Diary(),
-          thirdTab.MyProfilePage(),
+          thirdTab.HomePage(),
           fourthTab.Stat(),
           fifthTab.Profile(),
         ],

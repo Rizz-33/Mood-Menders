@@ -1,8 +1,9 @@
-class Song{
+class Song {
   final String songName;
   final String artistName;
   final String albumArtImagePath;
-  final String audioPath;
+  final String
+      audioPath; // This property should hold the path to the audio file
 
   Song({
     required this.songName,
@@ -10,5 +11,4 @@ class Song{
     required this.albumArtImagePath,
     required this.audioPath,
   });
-
 }

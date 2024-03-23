@@ -1,3 +1,4 @@
+import 'package:app/activeUser/pages/music.dart';
 import 'package:app/meditaionmethods.dart';
 import 'package:app/relaxation/aroma.dart';
 import 'package:app/relaxation/quickrelaxation.dart';
@@ -106,7 +107,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -158,7 +159,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -179,8 +180,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const meditaionmethods_page()),
+                      MaterialPageRoute(builder: (context) => MusicPage()),
                     );
                   },
                   child: Container(
@@ -215,7 +215,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -267,7 +267,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -324,7 +324,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -377,7 +377,7 @@ class _relaxation_pageState extends State<relaxation_page> {
                                   Theme.of(context).textTheme.displayLarge,
                               color: const Color.fromARGB(255, 70, 66, 68),
                               fontSize: 13,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],

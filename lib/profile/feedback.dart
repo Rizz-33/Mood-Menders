@@ -52,7 +52,8 @@ class _FeedbackFormState extends State<FeedbackForm> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Error'),
-              content: Text('Failed to submit feedback. Please try again later.'),
+              content:
+                  Text('Failed to submit feedback. Please try again later.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

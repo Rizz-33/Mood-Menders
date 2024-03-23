@@ -18,8 +18,8 @@ class _InviteFriendsState extends State<InviteFriends> {
 
       final Uri emailLaunchUri = Uri(
         scheme: 'mailto',
-        path: _friendEmail,
         queryParameters: {
+          'to': _friendEmail,
           'subject': 'Invitation to join',
           'body': 'Hey, I would like to invite you to join...',
         },
@@ -33,7 +33,24 @@ class _InviteFriendsState extends State<InviteFriends> {
         }
       } catch (e) {
         print('Error launching URL: $e');
-        // Handle error appropriately, e.g., show error message to the user
+        // Show error message
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Failed to open email app. Please try again later.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
       }
     }
   }

@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                   width: 100,
                 ),
         
-                const SizedBox(height: 40,),
+                const SizedBox(height: 40,), 
         
                 //welcome back message
                 Text(

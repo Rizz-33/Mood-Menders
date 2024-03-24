@@ -1,3 +1,5 @@
+import 'package:app/chat/service/auth/login_or_register.dart';
+import 'package:app/loading_page.dart';
 import 'package:app/profile/editProfile.dart';
 import 'package:app/profile/feedback.dart';
 import 'package:app/profile/inviteFriends.dart';
@@ -17,6 +19,40 @@ class _ProfileState extends State<Profile> {
   String userName = '';
   String userEmail= '';
   String? selectedAvatar;
+
+  void deleteAccount() {
+  final auth = FirebaseAuth.instance;
+  final user = auth.currentUser;
+
+  user?.delete().then((_) {
+    // Account deleted successfully
+    // Navigate to login screen or perform other actions
+    // For example:
+    MaterialPageRoute(builder: (context) => const loading_page());
+  }).catchError((error) {
+    // An error occurred while deleting the account
+    print("Error deleting account: $error");
+    // Display an error message or handle the error as needed
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('An error occurred while deleting your account.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                MaterialPageRoute(builder: (context) => LoginOrRegister());
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  });
+}
+
 
   void logout(){
     final auth = AuthService();
@@ -38,7 +74,7 @@ class _ProfileState extends State<Profile> {
               .get();
       if (snapshot.exists) {
         setState(() {
-          userName = snapshot.data()!['username'].toString();
+          userName = snapshot.data()!['name'].toString();
           userEmail = snapshot.data()!['email'];
           selectedAvatar = snapshot.data()!['avatar'];
         });
@@ -153,6 +189,29 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               const SizedBox(height: 16.0),
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                 child: ElevatedButton(
+                  onPressed: deleteAccount,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
+                    side: const BorderSide(color: Colors.black, width: 0.4),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 0,
+                    minimumSize: const Size(120, 40),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Delete Account'),
+                      Icon(Icons.arrow_forward),
+                    ],
+                  ),
+                               ),
+               ),
               const SizedBox(height: 36.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),

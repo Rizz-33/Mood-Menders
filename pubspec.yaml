@@ -51,6 +51,7 @@ dependencies:
   random_string: ^2.3.1
   fluttertoast: ^8.2.4
   image_picker: ^1.0.7
+  audioplayers: ^6.0.0
   # charts_flutter: ^0.12.0
   # table_calendar: ^3.0.8
   #cloud_firestore: ^4.15.4
@@ -78,7 +79,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - lib/images/
+    - lib/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

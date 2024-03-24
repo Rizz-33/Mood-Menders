@@ -1,5 +1,6 @@
 import 'package:app/components/button.dart';
 import 'package:app/meditaionmethods.dart';
+import 'package:app/navpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -148,8 +149,7 @@ class _movementstep10_pageState extends State<movementstep10_page> {
                 {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => (meditaionmethods_page())),
+                    MaterialPageRoute(builder: (context) => (Navbar())),
                   );
                 }
               },

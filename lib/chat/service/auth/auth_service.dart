@@ -2,29 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  //instances of auth and firestore
+  // Instances of auth and firestore
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  
-  //get current user
-  User? getCurrentUser() {
-    return _auth.currentUser;
-  }
-
-  //sign in
-  Future<UserCredential> signInWithEmailPassword(String email, password,) async {
+  // Sign in with email and password
+  Future<UserCredential> signInWithEmailPassword(String email, String password, String username) async {
     try {
+      // Sign in user
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
 
-      // save user if it doesnt already exist
-      _firestore.collection("Users").doc(userCredential.user!.uid).set(
-        {
-          'uid' : userCredential.user!.uid,
-          'email' : email,
-          //'name' : name,
-        }
-      );
+      // Check if the username is already saved in Firestore
+      DocumentSnapshot userDoc = await _firestore.collection("users").doc(userCredential.user!.uid).get();
+      if (!userDoc.exists) {
+        // Save the username to Firestore
+        await _firestore.collection("users").doc(userCredential.user!.uid).set({
+          'username': username,
+        });
+      }
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -32,22 +27,17 @@ class AuthService {
     }
   }
 
-  //sign up
-  Future<UserCredential> signInWithEmailAndPassword(String email, password, name) async {
+  // Sign up with email and password
+  Future<UserCredential> signUpWithEmailAndPassword(String email, String password, String username) async {
     try {
-      //create user
-      UserCredential userCredential =
-        await _auth.createUserWithEmailAndPassword(email: email, password: password,);
-      
+      // Create user
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
 
-      // save user
-      _firestore.collection("Users").doc(userCredential.user!.uid).set(
-        {
-          'uid' : userCredential.user!.uid,
-          'email' : email,
-          'name' : name,
-        }
-      );
+      // Save user details to Firestore
+      await _firestore.collection("users").doc(userCredential.user!.uid).set({
+        'username': username,
+        'email': email,
+      });
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -55,13 +45,15 @@ class AuthService {
     }
   }
 
-
-  //sign out
+  // Sign out
   Future<void> signOut() async {
     return await _auth.signOut();
   }
 
+  // Get current user
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
 
-  //errors
-
+  saveUsernameToFirestore(String username) {}
 }

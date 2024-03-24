@@ -1,4 +1,3 @@
-
 import 'package:app/chat/chat.dart';
 import 'package:app/chat/components/usertile.dart';
 import 'package:app/chat/service/auth/auth_service.dart';
@@ -9,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key});
 
-  // Chat and auth services
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
 
@@ -19,9 +17,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(
-            left: 10,
-          ),
+          padding: const EdgeInsets.only(left: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +25,7 @@ class HomePage extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 5.0,),
+                    padding: const EdgeInsets.only(left: 5.0),
                     child: Text(
                       'CHAT',
                       style: GoogleFonts.poppins(
@@ -70,55 +66,47 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Build a list of users except for the current logged-in user
   Widget _buildUserList() {
     return StreamBuilder(
       stream: _chatService.getUserStream(),
-      builder: (context, snapshot) {
-        // Error
+      builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
         if (snapshot.hasError) {
           return Text('Error');
         }
-
-        // Loading
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Text("Loading...");
         }
-
-        // Return list view
-        return ListView(
-          children: (snapshot.data as List<dynamic>).map<Widget>((userData) =>
-              _buildUserListItem(userData, context)).toList(),
+        List<Map<String, dynamic>> users = snapshot.data ?? [];
+        return ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            return _buildUserListItem(users[index], context);
+          },
         );
       },
     );
   }
 
-  // Build individual list tile for user
-  Widget _buildUserListItem(Map<String, dynamic>? userData, BuildContext context) {
-    // Check if userData is not null and contains the 'name' key
-    if (userData != null && userData.containsKey('name')) {
-      // Display users except the current user
-      if (userData['name'] != null && _authService.getCurrentUser() != null && userData['email'] != _authService.getCurrentUser()!.email) {
-        return UserTile(
-          text: userData['name'],
-          isNewMessage: false,
-          onTap: () {
-            // Tapped on a user -> go to chat
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatPage(
-                  receiverEmail: userData['email'],
-                  receiverID: userData['uid'].toString(), receiverName: userData['name'].toString(),
-                ),
+  Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context) {
+    if (userData['email'] != _authService.getCurrentUser()!.email) {
+      return UserTile(
+        text: userData['username'].toString(),
+        isNewMessage: false,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatPage(
+                receiverEmail: userData['email'],
+                receiverID: userData['uid'],
+                receiverName: userData['username'],
               ),
-            );
-          },
-        );
-      }
+            ),
+          );
+        },
+      );
+    } else {
+      return Container();
     }
-    // Return an empty container if userData is null or does not contain the 'name' key
-    return Container();
   }
 }

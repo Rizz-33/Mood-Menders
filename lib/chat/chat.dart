@@ -134,8 +134,7 @@ class _ChatPageState extends State<ChatPage> {
         //list view
         return ListView(
           controller: _scrollController,
-          children: (snapshot.data as QuerySnapshot).docs.map((doc) => _buildMessageItem(doc)).toList(),
-        );
+          children: snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),);
       },
     );
   }

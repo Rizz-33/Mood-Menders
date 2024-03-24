@@ -73,7 +73,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
         builder: (context) => ChatPage(
           receiverEmail: ds['Name'],
           receiverID: ds['Id'],
-          receiverName: ds['name'],
         ),
       ),
     );

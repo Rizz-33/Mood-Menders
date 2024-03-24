@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
-  final String receiverName;
 
-  ChatPage({Key? key, required this.receiverEmail, required this.receiverID, required this.receiverName}) : super(key: key);
+  ChatPage({super.key, required this.receiverEmail, required this.receiverID});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -93,7 +92,7 @@ class _ChatPageState extends State<ChatPage> {
               width: 36,
             ),
             const SizedBox(width: 24),
-            Text(widget.receiverName),
+            Text(widget.receiverEmail),
           ],
         ),
         backgroundColor: Colors.transparent,
@@ -134,7 +133,8 @@ class _ChatPageState extends State<ChatPage> {
         //list view
         return ListView(
           controller: _scrollController,
-          children: snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),);
+          children: (snapshot.data as QuerySnapshot).docs.map((doc) => _buildMessageItem(doc)).toList(),
+        );
       },
     );
   }

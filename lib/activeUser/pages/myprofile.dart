@@ -20,6 +20,7 @@ class MyProfilePage extends StatefulWidget {
 
   @override
   State<MyProfilePage> createState() => _MyProfilePageState();
+
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
@@ -46,6 +47,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
       
     });
   }
+
+
   @override
   void initState() {
     getontheload();
@@ -63,55 +66,91 @@ class _MyProfilePageState extends State<MyProfilePage> {
           DocumentSnapshot ds=snapshot.data.docs[index];
           return 
              GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChatPage(
+          receiverEmail: ds['Name'],
+          receiverID: ds['Id'],
+          receiverName: ds['name'],
+        ),
+      ),
+    );
+  },
+  child: Dismissible(
+    key: UniqueKey(),
+    direction: DismissDirection.endToStart,
+    onDismissed: (direction) {
+      DatabaseMethods().deleteEmployeeDetails(ds["Id"]);
+    },
+    background: Container(
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.only(right: 20.0),
+      color: Colors.red,
+      child: Icon(Icons.delete, color: Colors.white),
+    ),
+    child: Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      child: Material(
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          padding: EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    ds["Name"],
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatPage(
-                            receiverEmail: ds['Name'],
-                            receiverID: ds['Id'], receiverName: ds['name'],
-                          ),
-                        ),
-                      );
+                      namecontroller.text = ds["Name"];
+                      agecontroller.text = ds["Age"];
+                      addresscontroller.text = ds["Address"];
+                      EditEmployeeDetails(ds["Id"]);
                     },
-               child: Container(
-                 margin: EdgeInsets.only(bottom: 20.0),
-                 child: Material(
-                           elevation: 5.0,
-                           borderRadius: BorderRadius.circular(10),
-                           child: Container(
-                             padding: EdgeInsets.all(20),
-                             width: MediaQuery.of(context).size.width,
-                             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                             child: Column(
-                               crossAxisAlignment: CrossAxisAlignment.start,
-                               children: [
-                                 Row(
-                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                   children: [
-                                     Text(ds["Name"], style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),fontWeight: FontWeight.bold, fontSize: 20),),
-                                     GestureDetector(
-                                       onTap: (){
-                                         namecontroller.text=ds["Name"];
-                                         agecontroller.text=ds["Age"];
-                                         addresscontroller.text=ds["Address"];
-                                         EditEmployeeDetails(ds["Id"]);
-                                       },
-                                       child: Icon(Icons.edit, color: primaryColor,)),
-                                   ],
-                                 ),
-                                 Row(
-                                   children: [
-                                     Text("I am "+ds["Age"]+" years old and I reside in ", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68),),),
-                                     Text(ds["Address"]+".", style: TextStyle(color: const Color.fromARGB(255, 70, 66, 68)),),
-                                   ],
-                                 ),
-                               ],
-                             ),
-                           ),
-                         ),
-               ),
-             );
+                    child: Icon(Icons.edit, color: primaryColor),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "I am " + ds["Age"] + " years old and I reside in ",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                    ),
+                  ),
+                  Text(
+                    ds["Address"] + ".",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+
       })
       : Container();
     },);

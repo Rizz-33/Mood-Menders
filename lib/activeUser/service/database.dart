@@ -14,4 +14,11 @@ class DatabaseMethods {
     Future updateEmployeeDetails(String id, Map<String, dynamic> updateInfo)async{
       return await FirebaseFirestore.instance.collection("Active Users").doc(id).update(updateInfo);
     }
+    Future<void> deleteEmployeeDetails(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection('Active Users').doc(id).delete();
+    } catch (e) {
+      print("Error deleting chat details: $e");
+    }
+  }
 }

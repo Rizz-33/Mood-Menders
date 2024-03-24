@@ -28,20 +28,21 @@ class _home_pageState extends State<home_page> {
   }
 
   Future<void> _fetchUserName() async {
-    final User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final DocumentSnapshot<Map<String, dynamic>> snapshot =
-          await FirebaseFirestore.instance
-              .collection('Users')
-              .doc(user.uid)
-              .get();
-      if (snapshot.exists) {
-        setState(() {
-          userName = snapshot.data()!['name'].toString();
-        });
-      }
+  final User? user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    final DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await FirebaseFirestore.instance
+            .collection('Users')
+            .doc(user.uid)
+            .get();
+    if (snapshot.exists && mounted) {
+      setState(() {
+        userName = snapshot.data()!['name'].toString();
+      });
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:app/activeUser/model/playlist_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:app/chat/service/auth/auth_gate.dart';
 import 'package:app/firebase_options.dart'; // Make sure to import necessary files
 import 'package:app/loading_page.dart';
+import 'package:app/loading_page2.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 var primaryColor = Color.fromARGB(255, 39, 142, 135);
 
@@ -34,7 +38,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const loading_page(),
+      home: FutureBuilder(
+        future: Future.delayed(Duration(seconds: 2)),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return loading_page();
+          } else {
+            return FutureBuilder(
+              future: Future.delayed(Duration(seconds: 2)),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return loading_page2();
+                } else if (snapshot.connectionState ==
+                    ConnectionState.done) {
+                  return AuthGate();
+                } else {
+                  return loading_page();
+                }
+              },
+            );
+          }
+        },
+      ),
       theme: ThemeData(
         primaryColor: primaryColor,
         cardColor: primaryColor,

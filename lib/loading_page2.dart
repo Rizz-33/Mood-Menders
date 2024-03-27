@@ -28,7 +28,7 @@ class loading_page2 extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   height: 60,
                   color: const Color.fromARGB(251, 82, 130, 101),
-                  width: 250,
+                  width: 230,
                   child: Center(
                     child: Text(
                       'MOOD MENDERS',
@@ -55,7 +55,7 @@ class loading_page2 extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 190),
+              const SizedBox(height: 80),
 
               GestureDetector(
                 child: Image.asset(

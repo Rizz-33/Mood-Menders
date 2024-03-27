@@ -34,8 +34,8 @@ class Button extends StatelessWidget {
       buttonColor = Colors.black;
       borderColor = Colors.black;
     } else {
-      buttonColor = color == 'white' ? Colors.white : primaryColor;
-      borderColor = color == 'white' ? Colors.white : primaryColor;
+      buttonColor = color == 'white' ? Colors.white : primary;
+      borderColor = color == 'white' ? Colors.white : primary;
     }
 
     return Padding(

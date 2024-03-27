@@ -1,4 +1,4 @@
-import 'package:app/main.dart'; // Assuming primaryColor is defined here
+import 'package:app/main.dart'; // Assuming primary is defined here
 import 'package:app/profile/button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -84,21 +84,21 @@ class _FeedbackFormState extends State<FeedbackForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
-                  cursorColor: primaryColor,
+                  cursorColor: primary,
                   decoration: InputDecoration(
                     labelText: 'Feedback',
-                    labelStyle: TextStyle(color: primaryColor),
+                    labelStyle: TextStyle(color: primary),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor),
+                      borderSide: BorderSide(color: primary),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor),
+                      borderSide: BorderSide(color: primary),
                     ),
                     focusedErrorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor),
+                      borderSide: BorderSide(color: primary),
                     ),
                     errorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor),
+                      borderSide: BorderSide(color: primary),
                     ),
                   ),
                   validator: (value) {
@@ -117,7 +117,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   'Rate Us',
                   style: TextStyle(
                     fontSize: 16,
-                    color: primaryColor,
+                    color: primary,
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -131,7 +131,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   itemSize: 36,
                   itemBuilder: (context, _) => Icon(
                     Icons.star,
-                    color: primaryColor,
+                    color: primary,
                   ),
                   onRatingUpdate: (rating) {
                     setState(() {

@@ -65,11 +65,11 @@ class _InviteFriendsState extends State<InviteFriends> {
         padding: const EdgeInsets.all(16.0),
         child: Theme(
           data: Theme.of(context).copyWith(
-            cardColor: primaryColor,
+            cardColor: primary,
             inputDecorationTheme: InputDecorationTheme(
-              labelStyle: TextStyle(color: primaryColor),
+              labelStyle: TextStyle(color: primary),
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: primaryColor),
+                borderSide: BorderSide(color: primary),
               ),
             ),
           ),
@@ -78,7 +78,7 @@ class _InviteFriendsState extends State<InviteFriends> {
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  cursorColor: primaryColor,
+                  cursorColor: primary,
                   decoration: InputDecoration(
                     labelText: 'Friend\'s Email',
                   ),

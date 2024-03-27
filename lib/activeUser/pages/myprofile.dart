@@ -122,9 +122,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       addresscontroller.text = ds["Address"];
                       EditEmployeeDetails(ds["Id"]);
                     },
-                    child: Icon(Icons.edit, color: primaryColor),
-                  ),
-                ],
+                    child: Icon(Icons.edit, color: primary),
+              )],
               ),
               Row(
                 children: [
@@ -162,7 +161,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
         floatingActionButton: FloatingActionButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>DataPage(),));
         },
-        backgroundColor: primaryColor, // Change background color
+        backgroundColor: primary, // Change background color
         foregroundColor: Colors.white,
         child: Icon(Icons.add),),
 
@@ -274,7 +273,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           Text(
             "Edit ",
             style: TextStyle(
-              color: primaryColor,
+              color: primary,
               fontSize: 24.0,
               fontWeight: FontWeight.bold
             ),
@@ -283,7 +282,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
            Text(
             "Details",
             style: TextStyle(
-              color: primaryColor,
+              color: primary,
               fontSize: 24.0,
               fontWeight: FontWeight.bold
             ),

@@ -9,7 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-var primaryColor = Color.fromARGB(255, 39, 142, 135);
+var primary = Color.fromARGB(255, 39, 142, 135);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,13 +61,17 @@ class MyApp extends StatelessWidget {
         },
       ),
       theme: ThemeData(
-        primaryColor: primaryColor,
-        cardColor: primaryColor,
+        primaryColor: primary,
+        cardColor: primary,
         textSelectionTheme: TextSelectionThemeData(
-          cursorColor: primaryColor,
-          selectionColor: primaryColor.withOpacity(0.3),
-          selectionHandleColor: primaryColor,
+          cursorColor: primary,
+          selectionColor: primary.withOpacity(0.3),
+          selectionHandleColor: primary,
         ),
+        inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: primary),
+        labelStyle: TextStyle(color: primary),
+      ),
       ),
     );
   }

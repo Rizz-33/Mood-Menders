@@ -1,4 +1,3 @@
-import 'package:app/chat/service/auth/login_or_register.dart';
 import 'package:app/loading_page.dart';
 import 'package:app/profile/editProfile.dart';
 import 'package:app/profile/feedback.dart';
@@ -20,38 +19,46 @@ class _ProfileState extends State<Profile> {
   String userEmail= '';
   String? selectedAvatar;
 
-  void deleteAccount() {
+  
+void deleteAccount() async {
   final auth = FirebaseAuth.instance;
   final user = auth.currentUser;
 
-  user?.delete().then((_) {
-    // Account deleted successfully
-    // Navigate to login screen or perform other actions
-    // For example:
-    MaterialPageRoute(builder: (context) => const loading_page());
-  }).catchError((error) {
-    // An error occurred while deleting the account
-    print("Error deleting account: $error");
-    // Display an error message or handle the error as needed
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Error'),
-          content: Text('An error occurred while deleting your account.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                MaterialPageRoute(builder: (context) => LoginOrRegister());
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  });
+  if (user != null) {
+    try {
+      // Reauthenticate the user
+      await user.reauthenticateWithCredential(
+        EmailAuthProvider.credential(email: user.uid, password: ''),
+      );
+
+      await user.delete();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const loading_page()),
+      );
+    } catch (error) {
+      print("Error deleting account: $error");
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('An error occurred while deleting your account. Please try again.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 }
+
 
 
   void logout(){

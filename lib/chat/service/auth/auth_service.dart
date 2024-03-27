@@ -56,4 +56,6 @@ class AuthService {
   }
 
   saveUsernameToFirestore(String username) {}
+
+  reauthenticateUser(String? email) {}
 }

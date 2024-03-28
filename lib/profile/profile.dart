@@ -249,10 +249,36 @@ void deleteAccount() async {
                 ),
               ),
               SizedBox(height: 50,),
+                    Text('Contact NSBM Counselor', style: TextStyle(fontWeight: FontWeight.bold),),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text('Telephone Number'),
+                              SizedBox(height: 10,),
+                              Text('O115445156', style: TextStyle(color: Colors.grey[600]),),
+                              Text('0705445018', style: TextStyle(color: Colors.grey[600])),
+                            ],
+                          ),
+                          Spacer(),
+                          Column(
+                            children: [
+                              Text('Email Address'),
+                              SizedBox(height: 10,),
+                              Text('p@nsbm.ac.lk', style: TextStyle(color: Colors.grey[600])),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 50,),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Row(
                   children: [
+                    
                     SizedBox(height: 50,),
                     Text('Developed by undergraduate students\nfrom University of Plymouth, The UK.'),
                     SizedBox(width: 70,),
